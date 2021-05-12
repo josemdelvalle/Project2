@@ -1,29 +1,32 @@
 from time import sleep
+from behave import when, given, then
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 
-@given(u'The user is on the login home page')
+@given(u'The User is on the Project 1 LogIn Page')
 def step_impl(context):
     driver: WebDriver = context.driver
-    driver.get('https://www.wikipedia.org/')
-    sleep(1)
+    driver.maximize_window()
+    driver.get('http:google.com')
+    print("Here------------------------------------")
+    sleep(5)
 
 
-@when(u'The user inputs their username into the username field')
+@when(u'The user types the Robert in the username bar')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: When The user inputs their username into the username field')
+    pass
 
 
-@when(u'The user inputs their password into the password field')
+@when(u'The user types the Stark in the password bar')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: When The user inputs their password into the password field')
+    pass
 
 
-@when(u'The user clicks on the login button')
+@when(u'Presses the submit button')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: When The user clicks on the login button')
+    pass
 
 
-@then(u'The user should login successfully')
+@then(u'The Logged in Logged in appears')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then The user should login successfully')
+    pass
