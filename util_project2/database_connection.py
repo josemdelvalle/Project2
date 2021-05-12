@@ -1,9 +1,8 @@
 import psycopg2
-from psycopg2._psycopg import OperationalError
+from psycopg2 import OperationalError
 
 
-
-def crete_connction():
+def create_connection():
     try:
         conn = psycopg2.connect(database="postgres",
                                 user="  ",
@@ -16,4 +15,4 @@ def crete_connction():
         return conn
 
 
-connection = crete_connction()
+connection = create_connection()
