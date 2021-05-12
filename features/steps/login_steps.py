@@ -30,3 +30,11 @@ def step_impl(context):
 @then(u'The Logged in Logged in appears')
 def step_impl(context):
     pass
+
+
+@given(u'The user is logged in')
+def step_impl(context):
+    driver: WebDriver = context.driver
+    driver.maximize_window()
+    driver.get('http:wikipedia.com')
+    sleep(5)

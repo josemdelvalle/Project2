@@ -3,12 +3,6 @@ from behave import when, given, then
 from selenium.webdriver.chrome.webdriver import WebDriver
 
 
-@given(u'The user is logged in')
-def step_impl(context):
-    driver: WebDriver = context.driver
-    driver.maximize_window()
-    driver.get('http:wikipedia.com')
-    sleep(5)
 
 
 @given(u'The user is on the menu page')
