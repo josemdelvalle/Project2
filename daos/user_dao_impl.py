@@ -53,7 +53,7 @@ class UserDAOImpl(UserDAO):
         cursor = connection.cursor()
         # Keep in mind employee_id has to be added in the last column otherwise you will get "tuple index out of
         # range" error
-        cursor.execute(sql, [user.user_username, user.user_password])
+        cursor.execute(sql, [change.user_username, change.user_password])
         connection.commit()
 
         record = cursor.fetchone()
