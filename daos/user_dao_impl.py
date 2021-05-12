@@ -66,7 +66,8 @@ class UserDAOImpl(UserDAO):
         cursor.execute(sql, [user_id])
         connection.commit()
 
-    def get_user_credential(self, username, password):
+    @staticmethod
+    def get_user_credentials(username, password):
         sql = "SELECT * FROM users WHERE user_username=%s AND user_password=%s "
 
         cursor = connection.cursor()
