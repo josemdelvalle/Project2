@@ -8,7 +8,6 @@ def step_impl(context):
     driver: WebDriver = context.driver
     driver.maximize_window()
     driver.get('http:google.com')
-    print("Here------------------------------------")
     sleep(5)
 
 
