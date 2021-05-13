@@ -1,6 +1,12 @@
+from flask import jsonify, request
+from models.user_credentials import UserCredentials
+from services.user_service import UserService
+
+
 def route(app):
-    @app.route("/login/<username>/<password>", methods=["GET"])
-    def users_login(username, password):
-        user_login = UserService.login(username, password)
-        if user_login:
-            return jsonify(user_login.json()), 200
+    @app.route("/login", methods=["POST"])
+    def users_login():
+        print("Here")
+        user_credentials = UserCredentials.json_parse(request.json)
+        response = UserService.login(user_credentials)
+        return jsonify(response), 200
