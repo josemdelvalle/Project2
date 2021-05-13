@@ -1,10 +1,10 @@
 from flask import Flask
-from controllers import login_controller
+from controllers import login_controller as lc
 from flask_cors import CORS
 
 app = Flask(__name__)
 
-fc.route(app)
+lc.route(app)
 CORS(app)
 
 if __name__ == '__main__':
