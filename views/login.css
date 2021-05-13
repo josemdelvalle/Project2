@@ -1,0 +1,6 @@
+html, body{
+ background-image: url("imgs/loginBackground.jpg");
+ background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;  
+}
