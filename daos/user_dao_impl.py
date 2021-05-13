@@ -9,11 +9,14 @@ class UserDAOImpl(UserDAO):
 
     @classmethod
     def get_user_credentials(cls, user_credentials):
-        sql = "SELECT * FROM user_credentials WHERE username= %s AND password_ = %s"
-        cursor = connection.cursor()
-        cursor.execute(sql, [user_credentials.user_name, user_credentials.password])
-        record = cursor.fetchone()
-        return UserCredentials(record[0], record[1], record[2])
+        try:
+            sql = "SELECT * FROM user_credentials WHERE username= %s AND password_ = %s"
+            cursor = connection.cursor()
+            cursor.execute(sql, [user_credentials.user_name, user_credentials.password])
+            record = cursor.fetchone()
+            return record
+        except Exception as e:
+            return None
 
 
 pass
