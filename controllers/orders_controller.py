@@ -7,7 +7,7 @@ def route(app):
     @app.route("/orders", methods=['GET'])
     def get_orders():
         try:
-            orders = OrrdersServiceImpl.get_orders()
+            orders = OrdersServiceImpl.get_orders()
             return jsonify(orders), 200  # ok
         except ValueError as e:
             return "Not a valid ID", 400  # Bad Request

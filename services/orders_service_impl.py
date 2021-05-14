@@ -3,7 +3,7 @@ from models.orders import Orders
 from services.orders_service import OrdersService
 
 
-class OrrdersServiceImpl(OrdersService):
+class OrdersServiceImpl(OrdersService):
     @classmethod
     def get_orders(ccls):
         try:
