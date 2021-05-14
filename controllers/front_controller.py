@@ -20,17 +20,17 @@ def route(app):
                 user = UserServiceImpl.get_user_by_id(validate_credentials)
                 response = jsonify(user.json())
                 response.set_cookie('hi', 'cookie')
-                print("hello")
-                response2 = make_response("<h1>cookie is set</h1>")
-                response2.set_cookie('hey', 'loooool')
-                return response2, 200
+                # print("hello")
+                # response2 = make_response("<h1>cookie is set</h1>")
+                # response2.set_cookie('hey', 'loooool')
+                return response, 200
             else:
                 return 'Invalid username or password', 404
         except Exception as e:
             return 'Invalid username or password', 404
 
     @app.route("/menu", methods=['Get'])
-    def show_menu():
+    def get_products():
         try:
             pass
         except Exception as e:

@@ -1,5 +1,3 @@
-
-
 const btn = document.getElementById('loginButton');
 btn.addEventListener('click', (e) => {
     e.preventDefault(); // disable the refresh on the page when submit
@@ -20,7 +18,11 @@ btn.addEventListener('click', (e) => {
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText)
-            console.log("hello2")
+            responseObject= JSON.parse(this.responseText);
+            console.log(responseObject);
+
+
+         window.location.href = "/storePage.html";
         }else{
             console.log("hello")
         }
