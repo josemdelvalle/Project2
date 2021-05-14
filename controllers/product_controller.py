@@ -10,7 +10,5 @@ def route(app):
         try:
             products = ProductServiceImpl.get_products()
             return jsonify(products), 200  # ok
-        except ValueError as e:
-            return "Not a valid ID", 400  # Bad Request
         except ResourceNotFound as r:
             return r.message, 404

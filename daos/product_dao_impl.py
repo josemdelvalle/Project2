@@ -16,7 +16,7 @@ class ProductDAOImpl(ProductDAO):
                 products.append(Products(product[0], product[1], product[2], product[3]))
             return products
         except Exception as e:
-            return None
+            raise ResourceNotFound(f"Credentials do not match any existing records. Please try again.")
 
     # @classmethod
     # def get_user_by_id(cls, user_credentials):
