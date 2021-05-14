@@ -2,6 +2,9 @@ from abc import abstractmethod, ABC
 
 
 class UserDAO(ABC):
+    @abstractmethod
+    def get_user_by_id(self, user_credentials):
+        pass
 
     @abstractmethod
     def get_user_credentials(self, user_credentials):
