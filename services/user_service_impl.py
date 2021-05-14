@@ -1,5 +1,5 @@
 from models.user import User
-from models.user_credentials import UserCredentials
+from models.user_credentials_model import UserCredentials
 from services.user_service import UserService
 from daos.user_dao_impl import UserDAOImpl
 

@@ -11,6 +11,7 @@ class UserService:
     def get_user_by_id(self, user_credentials):
         pass
 
+
     # @classmethod
     # def create_new_user_credential(cls, user):
     #     return cls.user_dao.create_new_user(user), 201

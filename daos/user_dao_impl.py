@@ -1,7 +1,7 @@
 from flask import jsonify, json
 from daos.user_dao import UserDAO
 from exceptions.resource_not_found import ResourceNotFound
-from models.user_credentials import UserCredentials
+from models.user_credentials_model import UserCredentials
 from util_project2.db_connection import connection
 
 
