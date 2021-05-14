@@ -1,5 +1,5 @@
 from daos.product_dao import ProductDAO
-from util_project2.db_connection import connection
+from util_project2.database_connection import connection
 from models.products import Products
 
 
@@ -7,7 +7,7 @@ class ProductDAOImpl(ProductDAO):
     @classmethod
     def get_products(cls):
         try:
-            sql = "SELECT * FROM products ;"
+            sql = "SELECT * FROM products;"
             cursor = connection.cursor()
             cursor.execute(sql)
             records = cursor.fetchall()
