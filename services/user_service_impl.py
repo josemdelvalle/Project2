@@ -6,18 +6,11 @@ from daos.user_dao_impl import UserDAOImpl
 
 class UserServiceImpl(UserService):
     @classmethod
-    def get_user_by_id(cls, user_credentials):
-        try:
-            response = UserDAOImpl.get_user_by_id(user_credentials)
-            if response:
-                return User(response[0], response[1], response[2])
-        except Exception as e:
-            return None
+    def get_user_by_id(cls, user_id):
+        return UserDAOImpl.get_user_by_id(user_id)
 
     @classmethod
     def get_user_credentials(cls, user_credentials):
-        response = UserDAOImpl.get_user_credentials(user_credentials)
-        if response:
-            return UserCredentials(response[1], response[2], response[3])
-        else:
-            return None
+        user = UserDAOImpl.get_user_credentials(user_credentials)
+        return user.user_id
+

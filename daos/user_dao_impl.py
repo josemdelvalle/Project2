@@ -1,35 +1,37 @@
 from flask import jsonify, json
 from daos.user_dao import UserDAO
 from exceptions.resource_not_found import ResourceNotFound
+from models.user import User
 from models.user_credentials import UserCredentials
 from util_project2.database_connection import connection
 
 
 class UserDAOImpl(UserDAO):
     @classmethod
-    def get_user_by_id(cls, user_credentials):
-        try:
-            sql = "SELECT * FROM users WHERE user_id= %s ;"
-            cursor = connection.cursor()
-            cursor.execute(sql, [user_credentials.user_id])
-            record = cursor.fetchone()
-            return record
-        except Exception as e:
-            return None
+    def get_user_by_id(cls, user_id):
+        sql = "SELECT * FROM users WHERE user_id= %s ;"
+        cursor = connection.cursor()
+        cursor.execute(sql, [user_id])
+        record = cursor.fetchone()
+
+        if record:
+            return User(record[0], record[1], record[2])
+        else:
+            raise ResourceNotFound(f"User with ID {user_id} does not exist. Please try again.")
 
     @classmethod
     def get_user_credentials(cls, user_credentials):
-        try:
-            sql = "SELECT * FROM user_credentials WHERE username= %s AND password_ = %s"
-            cursor = connection.cursor()
-            cursor.execute(sql, [user_credentials.user_name, user_credentials.password])
-            record = cursor.fetchone()
-            return record
-        except Exception as e:
-            return None
+        sql = "SELECT * FROM user_credentials WHERE username= %s AND password_ = %s"
+        cursor = connection.cursor()
+        cursor.execute(sql, [user_credentials.user_name, user_credentials.password])
+        record = cursor.fetchone()
+
+        if record:
+            return UserCredentials(record[0], record[1], record[2])
+        else:
+            raise ResourceNotFound(f"Credentials do not match any existing records. Please try again.")
 
 
-pass
 # def create_new_user_credential(self, user):
 #     sql = "INSERT INTO users VALUES(DEFAULT, %s, %s) RETURNING *"
 #     cursor = connection.cursor()

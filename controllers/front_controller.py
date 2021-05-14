@@ -1,6 +1,7 @@
-from flask import jsonify, request, make_response, render_template
+from flask import jsonify, request
 from models.user_credentials import UserCredentials
 from services.user_service_impl import UserServiceImpl
+from exceptions.resource_not_found import ResourceNotFound
 
 
 def route(app):
@@ -9,20 +10,14 @@ def route(app):
     def users_login():
         try:
             user_credentials = UserCredentials.json_parse(request.json)
-            validate_credentials = UserServiceImpl.get_user_credentials(user_credentials) #returns none if nothing found
-            if validate_credentials:
-                user = UserServiceImpl.get_user_by_id(validate_credentials)
-                if user:
-                    response = jsonify(user.json())
-                    response.set_cookie('hi', 'cookie')
-                    # print("hello")
-                    # response2 = make_response("<h1>cookie is set</h1>")
-                    # response2.set_cookie('hey', 'loooool')
-                    return response, 200
-            else:
-                return 'Invalid username or password', 404
-        except Exception as e:
-            return 'Invalid username or password', 404
+            # Return the user ID if the credentials are in the database, otherwise returns an exception
+            user_id = UserServiceImpl.get_user_credentials(user_credentials)
+            # Gets user information from ID returned in previous step
+            user = UserServiceImpl.get_user_by_id(user_id)
+            response = jsonify(user.json())
+            return response, 200
+        except ResourceNotFound as r:
+            return r.message, 404
     #
     # @app.route("/menu", methods=['Get'])
     # def get_products():
