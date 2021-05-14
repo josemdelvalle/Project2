@@ -12,12 +12,13 @@ def route(app):
             validate_credentials = UserServiceImpl.get_user_credentials(user_credentials) #returns none if nothing found
             if validate_credentials:
                 user = UserServiceImpl.get_user_by_id(validate_credentials)
-                response = jsonify(user.json())
-                response.set_cookie('hi', 'cookie')
-                # print("hello")
-                # response2 = make_response("<h1>cookie is set</h1>")
-                # response2.set_cookie('hey', 'loooool')
-                return response, 200
+                if user:
+                    response = jsonify(user.json())
+                    response.set_cookie('hi', 'cookie')
+                    # print("hello")
+                    # response2 = make_response("<h1>cookie is set</h1>")
+                    # response2.set_cookie('hey', 'loooool')
+                    return response, 200
             else:
                 return 'Invalid username or password', 404
         except Exception as e:

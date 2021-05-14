@@ -21,13 +21,14 @@ btn.addEventListener('click', (e) => {
             responseObject= JSON.parse(this.responseText);
             console.log(responseObject);
 
-
-         window.location.href = "/storePage.html";
-         document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+            document.cookie = "username=John Doe";
+        //  window.location.href = "/storePage.html";
+        document.cookie = "username=John Doe; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html";
+        
 
 
         }else{
-            console.log("hello")
+            console.log(this.responseText);
         }
     }
     
