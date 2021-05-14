@@ -1,7 +1,7 @@
 from flask import jsonify
 
 from exceptions.resource_not_found import ResourceNotFound
-from services.orders_service_impl import OrrdersServiceImpl
+from services.orders_service_impl import OrdersServiceImpl
 
 def route(app):
     @app.route("/orders", methods=['GET'])
