@@ -1,16 +1,20 @@
 from daos.product_dao import ProductDAO
 from util_project2.db_connection import connection
+from models.products import Products
 
 
 class ProductDAOImpl(ProductDAO):
     @classmethod
-    def get_all_products(cls):
+    def get_products(cls):
         try:
             sql = "SELECT * FROM products ;"
             cursor = connection.cursor()
             cursor.execute(sql)
             records = cursor.fetchall()
-            return records
+            products = []
+            for product in records:
+                products.append(Products(product[0], product[1], product[2], product[3]))
+            return products
         except Exception as e:
             return None
 

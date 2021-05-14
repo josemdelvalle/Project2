@@ -23,6 +23,9 @@ btn.addEventListener('click', (e) => {
 
 
          window.location.href = "/storePage.html";
+         document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+
+
         }else{
             console.log("hello")
         }

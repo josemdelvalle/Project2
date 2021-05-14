@@ -4,12 +4,6 @@ from services.user_service_impl import UserServiceImpl
 
 
 def route(app):
-    @app.route("/", methods=['GET'])
-    def login_page():
-        print('here')
-        response = make_response("<h1>cookie is set</h1>")
-        response.set_cookie('hey', 'loooool')
-        return response
 
     @app.route("/login", methods=['POST'])
     def users_login():
@@ -28,10 +22,10 @@ def route(app):
                 return 'Invalid username or password', 404
         except Exception as e:
             return 'Invalid username or password', 404
-
-    @app.route("/menu", methods=['Get'])
-    def get_products():
-        try:
-            pass
-        except Exception as e:
-            return 'Need to sign in first', 404
+    #
+    # @app.route("/menu", methods=['Get'])
+    # def get_products():
+    #     try:
+    #         pass
+    #     except Exception as e:
+    #         return 'Need to sign in first', 404
