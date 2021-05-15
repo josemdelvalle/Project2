@@ -7,7 +7,9 @@ app = Flask(__name__)
 lc.route(app)
 pc.route(app)
 oc.route(app)
+
 CORS(app, supports_credentials=True)
+
 # app.config['CORS_HEADERS'] = 'Content-Type'
 
 
