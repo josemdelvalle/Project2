@@ -1,0 +1,94 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color:rgb(163, 255, 255);
+    /* background-image: url("imgs/storePageBG3.jpg"); */
+    background-size: cover;
+    /* <------ */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.container {
+    background-color: rgb(255, 255, 255);
+
+}
+
+.navbar {
+    background-color: rgb(163, 255, 255);
+}
+
+#logo {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+}
+
+#logoIceCream {
+    color: rgb(255, 255, 255);
+}
+
+#cartBtn {
+    border: 2px solid white;
+    text-align: center;
+    border-radius: 2px;
+    background-color: #ffffff;
+    padding: 8px;
+    margin: auto;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    
+}
+
+#cartBtn:focus {
+    border: 3px solid;
+    border-color: aqua;
+    background: white;
+}
+/* https://via.placeholder.com/258x180.png?text=Visit+WhoIsHostingThis.com+Buyers+GuideC/O https://placeholder.com/#How_To_Use_Our_Placeholders */
+.page-footer {
+    background-color: rgb(163, 255, 255);
+}
+
+.filterBtns {
+  
+    padding: 10px;
+    background-color: white;
+    border-color: white;
+    border-style: solid;
+    font-size: 30px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.filterBtns:focus {
+    border-color: aqua;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #dee3e6;
+}
+.productImg{
+    height: 200px;
+    width: 200px;
+    padding: 5px;
+    border: 3px solid rgb(163, 255, 255);
+
+}
+.productCard{
+    text-align: center;
+   
+    
+    
+}
+.text-font{
+    font-family: 'Pacifico', cursive;
+}
