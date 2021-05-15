@@ -18,13 +18,15 @@ class ProductDAOImpl(ProductDAO):
         except Exception as e:
             raise ResourceNotFound(f"Credentials do not match any existing records. Please try again.")
 
-    # @classmethod
-    # def get_user_by_id(cls, user_credentials):
-    #     try:
-    #         sql = "SELECT * FROM users WHERE user_id= %s ;"
-    #         cursor = connection.cursor()
-    #         cursor.execute(sql, [user_credentials.user_id])
-    #         record = cursor.fetchone()
-    #         return record
-    #     except Exception as e:
-    #         return None
+    def get_product_id(self, product_id):
+        sql = "SELECT * FROM products WHERE product_id = %s"
+        cursor = connection.cursor()
+        cursor.execute(sql, [product_id])
+
+        record = cursor.fetchone()
+
+        if record:
+            return Products(record[0], record[1], record[2], record[3])
+        else:
+            raise ResourceNotFound(f"Product with {product_id} - Not Found")
+

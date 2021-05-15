@@ -12,3 +12,13 @@ def route(app):
             return jsonify(products), 200  # ok
         except ResourceNotFound as r:
             return r.message, 404
+
+    @app.route("/products/<product_id>", methods=['GET'])
+    def get_product_id(product_id):
+        try:
+            product = ProductService.get_products(int(product_id))
+            return jsonify(product.json()), 200  # ok
+        except ValueError as e:
+            return "Not a valid ID", 400  # Bad Request
+        except ResourceNotFound as r:
+            return r.message, 404
