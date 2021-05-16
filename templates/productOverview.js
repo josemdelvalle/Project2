@@ -9,3 +9,5 @@ var getCookie = (cookie_name) =>{
   }
 
 document.getElementById("productName").innerHTML = getCookie("productId");
+
+
