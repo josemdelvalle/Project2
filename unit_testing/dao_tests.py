@@ -7,6 +7,7 @@ from models.products import Products
 from models.user import User
 from models.user_credentials import UserCredentials
 from models.product_cart import ProductCart
+from util_project2.database_connection import connection
 
 
 class DAOTests(unittest.TestCase):
@@ -38,12 +39,17 @@ class DAOTests(unittest.TestCase):
 
     def test_add_product_to_cart(self):
         test_product = Products(
-            9,
-            "Fudge Ripple",
-            24.0,
-            "Vanilla Ice Cream with Chocolate Fudge",
-           ).json()
+            9, "Fudge Ripple", 24.0, "Vanilla Ice Cream with Chocolate Fudge").json()
 
         product_cart_dao = ProductCartDAO()
-        new_dict = product_cart_dao.add_product(test_product)
-        self.assertEqual(new_dict["productId"], test_product["productId"])
+        returned_product = product_cart_dao.add_product(test_product)
+        self.assertEqual(returned_product["productId"], test_product["productId"])
+
+    def test_get_all_cart_items(self):
+        all_products = ProductCartDAO.get_all_products()
+        self.assertIsNotNone(all_products)
+
+    def test_delete_product_from_cart(self):
+        product = ProductCartDAO.delete_product_from_cart(9)
+        self.assertEqual(product["productId"], 9)
+
