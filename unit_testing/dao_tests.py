@@ -2,9 +2,11 @@ import unittest
 
 from daos.product_dao_impl import ProductDAOImpl
 from daos.user_dao_impl import UserDAOImpl
+from daos.product_cart_dao import ProductCartDAO
 from models.products import Products
 from models.user import User
 from models.user_credentials import UserCredentials
+from models.product_cart import ProductCart
 
 
 class DAOTests(unittest.TestCase):
@@ -33,3 +35,15 @@ class DAOTests(unittest.TestCase):
         credentials = UserCredentials("jose", "12345", 1)
         test_credentials = UserDAOImpl.get_user_credentials(credentials)
         self.assertDictEqual(credentials.json(), test_credentials.json())
+
+    def test_add_product_to_cart(self):
+        test_product = Products(
+            9,
+            "Fudge Ripple",
+            24.0,
+            "Vanilla Ice Cream with Chocolate Fudge",
+           ).json()
+
+        product_cart_dao = ProductCartDAO()
+        new_dict = product_cart_dao.add_product(test_product)
+        self.assertEqual(new_dict["productId"], test_product["productId"])
