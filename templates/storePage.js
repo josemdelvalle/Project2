@@ -1,7 +1,7 @@
 function createProductElement(element){
     document.getElementById("productRow").innerHTML+=
     `    <div class="col-4 productCard">
-                <button onclick=goToProductOverview(this.name) name="${element.productId}">
+                <button onclick=goToProductOverview(this.name) id="${element.productId}">
                     <img class="productImg"
                     src="/imgs/${element.productId}.jpg">
                     <div>${element.productName}</div>
@@ -12,7 +12,7 @@ function createProductElement(element){
 }
 function goToProductOverview(pruductName){
   document.cookie = `productId=${pruductName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/productOverview.html`;
-  window.location.href = "/productOverview.html";
+  document.location.href = "productOverview.html";
 }
 
 // allProducts = [];

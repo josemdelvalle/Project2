@@ -28,7 +28,7 @@ def step_impl(context):
 
 @then(u'The Logged in Logged in appears')
 def step_impl(context):
-    sleep(10)
+    sleep(1)
     print(context.driver.title)
     assert context.driver.title == "Store Page"
 
