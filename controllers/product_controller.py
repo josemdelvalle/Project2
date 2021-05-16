@@ -16,7 +16,7 @@ def route(app):
     @app.route("/products/<product_id>", methods=['GET'])
     def get_product_id(product_id):
         try:
-            product = ProductService.get_products(int(product_id))
+            product = ProductServiceImpl.get_product_by_id(int(product_id))
             return jsonify(product.json()), 200  # ok
         except ValueError as e:
             return "Not a valid ID", 400  # Bad Request

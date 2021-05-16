@@ -19,13 +19,12 @@ class ProductDAOImpl(ProductDAO):
         except Exception as e:
             raise ResourceNotFound(f"Credentials do not match any existing records. Please try again.")
 
-    def get_product_id(self, product_id):
+    @classmethod
+    def get_product_id(cls, product_id):
         sql = "SELECT * FROM products WHERE product_id = %s"
         cursor = connection.cursor()
         cursor.execute(sql, [product_id])
-
         record = cursor.fetchone()
-
         if record:
             return Products(record[0], record[1], record[2], record[3])
         else:

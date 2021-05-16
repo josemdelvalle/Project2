@@ -7,7 +7,25 @@ var getCookie = (cookie_name) =>{
       return "this-cookie-doesn't-exist";
     }
   }
+  productId= getCookie("productId");
+document.getElementById("productName").innerHTML =productId;
 
-document.getElementById("productName").innerHTML = getCookie("productId");
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true
+xhr.open("GET", `http://127.0.0.1:5000/products/${productId}`, true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText)
+      product=JSON.parse(this.responseText);
+      console.log(product);
+      document.getElementById("productName").innerHTML =product.productName;
+      document.getElementById("productDescription").innerHTML =product.description;
+      document.getElementById("productPrice").innerHTML =product.productPrice;
+      document.getElementById("productImg").src = `/imgs/${product.productId}.jpg`;
 
-
+    }else{
+  
+    }
+}
+xhr.send();

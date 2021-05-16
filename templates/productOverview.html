@@ -25,19 +25,23 @@
             </div>
         </div>
         <hr>
-        <div class="row ">
+        <div class="row">
             <div class="col">
-                <h3 id="productName" class="ml-5 text-font">Product Name: <span>HELLO</span> </h3>
+                <h3 id="productName" class="ml-5 text-font">Product Name:</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col  text-center p-4 border-right">
-                <div><img class="productImg" src="/imgs/1.jpg" alt=""></div>
+            <div class="col  text-center p-3 border-right">
+                <div><img class="productImg p-2" id="productImg" src="/imgs/1.jpg" alt=""></div>
             </div>
-            <div class="col"> 
-            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, neque mollitia illum ullam a labore ut possimus vitae atque ab, rerum reprehenderit veritatis error, aliquid magnam at voluptate expedita molestias.</div>
+            <div class="col p-3"> 
+            <div id="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, neque mollitia illum ullam a labore ut possimus vitae atque ab, rerum reprehenderit veritatis error, aliquid magnam at voluptate expedita molestias.</div>
+            <br>
             <div>Quantity: <input type="number" value="1" id="productQuantity"></div>
-            <div><button id="addCartButton"> Add to cart</button></div>   
+            <br>
+            <div>$: <span  id="productPrice" ></span></div>
+            <br>
+            <div><button class="cartBtn" id="addCartButton"> Add to cart</button></div>   
         </div>
         </div>
 

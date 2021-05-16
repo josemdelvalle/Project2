@@ -8,5 +8,5 @@ class ProductService:
         pass
 
     @abstractmethod
-    def get_product_id(self, product_id):
+    def get_product_by_id(self, product_id):
         pass
