@@ -6,9 +6,6 @@ btn.addEventListener('click', (e) => {
     const username = document.getElementById('usernameInput').value;
     const password = document.getElementById('passwordInput').value;
     xhr.open("POST", "http://127.0.0.1:5000/login", true);
-    ;
-    console.log(username)
-    console.log(password)
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
         userName: username,
@@ -20,8 +17,6 @@ btn.addEventListener('click', (e) => {
             console.log(this.responseText)
             responseObject= JSON.parse(this.responseText);
             console.log(responseObject);
-
-        
         
         document.cookie = `firstName=${responseObject.firstName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html`;
         document.cookie = `lastName=${responseObject.lastName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html`;

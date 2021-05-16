@@ -9,8 +9,8 @@ class ProductServiceImpl(ProductService):
         list_of_products = ProductDAOImpl.get_products()
         return [product.json() for product in list_of_products]
 
-    class UserServiceImpl(UserService):
-        @classmethod
-        def get_product_id(cls, product_id):
-            return ProductDAOImpl.get_product_id(product_id)
+    # class UserServiceImpl(UserService):
+    #     @classmethod
+    #     def get_product_id(cls, product_id):
+    #         return ProductDAOImpl.get_product_id(product_id)
 

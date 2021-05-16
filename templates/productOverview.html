@@ -4,46 +4,46 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Store Page</title>
+    <title>Product Overview</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-        <script src="storePageLogIn.js"></script>
-    <!-- Putting it here so that if not loged in it wont show page before redirect -->
-    <link rel="stylesheet" href="storePage.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="storePageOverview.css">
 </head>
 
 <body>
     <div class="container p-0">
         <nav class="navbar navbar-light text-font">
             <span id="logo">FSFT<i class="fas fa-ice-cream" id="logoIceCream"></i></span>
-            <button class=" ml-auto mr-1 " id="cartBtn">Go to cart! <i class="fas fa-shopping-cart"></i></button>
+            <button class=" ml-auto mr-1 cartBtn " id="">Go to cart! <i class="fas fa-shopping-cart"></i></button>
         </nav>
-        
-        <div class="row p-0 mt-4 text-center text-font ">
+
+        <div class="row p-0 mt-4  text-font ">
             <div class="col">
-                <button class="filterBtns">All Products</button>
-            </div>
-            <div class="col">
-                <button class="filterBtns">IceCreams</button>
-            </div>
-            <div class="col">
-                <button class="filterBtns">MilkShakes</button>
+                <button class="ml-5 cartBtn"> <i class="fas fa-arrow-circle-left"></i> Go Back</button>
             </div>
         </div>
         <hr>
         <div class="row ">
             <div class="col">
-                <h3 class="ml-5 text-font">Our Products:</h3>
+                <h3 id="productName" class="ml-5 text-font">Product Name: <span>HELLO</span> </h3>
             </div>
         </div>
-        <div class="row p-0 m-0 text-font" id="productRow">
+        <div class="row">
+            <div class="col  text-center p-5">
+                <div><img class="productImg" src="/imgs/1.jpg" alt=""></div>
+            </div>
+            <div class="col"> 
+            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, neque mollitia illum ullam a labore ut possimus vitae atque ab, rerum reprehenderit veritatis error, aliquid magnam at voluptate expedita molestias.</div>
+            <div>Quantity: <input type="number" value="1"></div>
+            <div><button> Add to cart</button></div>   
+        </div>
         </div>
 
-   
-    <!-- Footer -->
-    <footer class="page-footer">
+
+        <!-- Footer -->
+        <footer class="page-footer">
 
 
             <!-- Grid row-->
@@ -84,18 +84,18 @@
             </div>
             <!-- Grid row-->
 
-        
-        <!-- Footer Elements -->
 
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2021 Copyright:
-            <a href=""> FSFT.com</a>
-        </div>
-        <!-- Copyright -->
+            <!-- Footer Elements -->
 
-    </footer>
-    <!-- Footer -->
-</div>
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">© 2021 Copyright:
+                <a href=""> FSFT.com</a>
+            </div>
+            <!-- Copyright -->
+
+        </footer>
+        <!-- Footer -->
+    </div>
 
 
     </div>
@@ -108,7 +108,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    <script src="storePage.js"></script>
 </body>
 
 </html>

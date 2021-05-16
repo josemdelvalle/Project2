@@ -30,7 +30,7 @@ body {
     color: rgb(255, 255, 255);
 }
 
-#cartBtn {
+.cartBtn {
     border: 2px solid white;
     text-align: center;
     border-radius: 2px;
@@ -42,57 +42,32 @@ body {
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
-    
+    outline: 0;
 }
 
-#cartBtn:focus {
-    border: 3px solid;
+.cartBtn:focus {
+    border: 3px solid ;
     border-color: aqua;
     background: white;
+    outline: 0;
 }
 /* https://via.placeholder.com/258x180.png?text=Visit+WhoIsHostingThis.com+Buyers+GuideC/O https://placeholder.com/#How_To_Use_Our_Placeholders */
 .page-footer {
     background-color: rgb(163, 255, 255);
 }
 
-.filterBtns {
-  
-    padding: 10px;
-    background-color: white;
-    border-color: white;
-    border-style: solid;
-    font-size: 30px;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-    box-sizing: border-box;
-}
-
-.filterBtns:focus {
-    border-color: aqua;
-}
-
 hr {
     border: 0;
     border-top: 1px solid #dee3e6;
 }
-.productImg{
-    height: 200px;
-    width: 200px;
-    padding: 5px;
-    border: 3px solid rgb(163, 255, 255);
-
-}
-.productCard{
-    text-align: center;
-}
-.productCard button{
-    text-align: center;
-    background-color: white;
-    border-color: white;
-    border-style: solid;
-    
-}
 .text-font{
     font-family: 'Pacifico', cursive;
+}
+
+.productImg{
+    height: 70%;
+    width: 70%;
+    padding: 10px;
+    border: 3px solid rgb(163, 255, 255);
+
 }

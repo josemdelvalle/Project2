@@ -1,4 +1,5 @@
 from daos.product_dao import ProductDAO
+from exceptions.resource_not_found import ResourceNotFound
 from util_project2.database_connection import connection
 from models.products import Products
 
