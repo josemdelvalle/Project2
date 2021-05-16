@@ -1,6 +1,7 @@
 from daos.orders_dao import OrdersDAO
-from util_project2.database_connection import connection
 from models.orders import Orders
+from util_project2.database_connection import connection
+
 
 class OrdersDAOImpl(OrdersDAO):
     @classmethod
@@ -16,4 +17,3 @@ class OrdersDAOImpl(OrdersDAO):
             return orders
         except Exception as e:
             return None
-

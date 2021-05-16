@@ -21,7 +21,7 @@ btn.addEventListener('click', (e) => {
         document.cookie = `firstName=${responseObject.firstName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html`;
         document.cookie = `lastName=${responseObject.lastName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html`;
         document.cookie = "Logedin=True; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html";
-        window.location.href = "/storePage.html";
+        document.location.href = "storePage.html";
 
 
         }else{
