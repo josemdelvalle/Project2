@@ -11,9 +11,10 @@ class DAOTests(unittest.TestCase):
     def test_get_all_products(self):
         products = ProductDAOImpl().get_products()
         test_product = {
+            "productId": 9,
             "description": "Vanilla Ice Cream with Chocolate Fudge",
-            "product_name": "Fudge Ripple",
-            "product_price": 24.0
+            "productName": "Fudge Ripple",
+            "productPrice": 24.0
         }
         for product in products:
             try:
