@@ -1,3 +1,5 @@
+from daos.orders_dao_impl import OrdersDAOImpl
+from models.orders import Orders
 from models.product_cart import ProductCart
 from models.products import Products
 from util_project2.database_connection import connection
@@ -41,3 +43,27 @@ class ProductCartDAO:
             cart_list.append(product.json())
 
         return cart_list
+
+    @staticmethod
+    def purchase_cart_items(user_id):
+        # First want to grab everything from the databse to add to the orders table
+        sql = "SELECT * FROM product_cart WHERE user_id = %s"
+        cursor = connection.cursor()
+        cursor.execute(sql, [user_id])
+        connection.commit()
+        records = cursor.fetchall()
+        # Then hold each item into a list to be exported to the orders table
+        purchased_products = []
+        order = Orders()
+        for record in records:
+            product = ProductCart(record[0], record[1], record[2], record[3], record[4])
+            purchased_products.append(product.json())
+
+        order_number = OrdersDAOImpl.return_largest_order_number()
+        for product in purchased_products:
+            order.order_number = order_number
+            order.quantity = product.quantity
+            order.product_id = product.product_id
+            order.user_id = product.user_id
+            OrdersDAOImpl.add_order(order)
+        return purchased_products
