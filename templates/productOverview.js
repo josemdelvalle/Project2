@@ -10,6 +10,9 @@ var getCookie = (cookie_name) =>{
   productId= getCookie("productId");
 document.getElementById("productName").innerHTML =productId;
 
+
+
+var price;
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true
 xhr.open("GET", `http://127.0.0.1:5000/products/${productId}`, true);
@@ -22,6 +25,7 @@ xhr.onreadystatechange = function () {
       document.getElementById("productName").innerHTML =product.productName;
       document.getElementById("productDescription").innerHTML =product.description;
       document.getElementById("productPrice").innerHTML =product.productPrice;
+      price=product.productPrice;
       document.getElementById("productImg").src = `/imgs/${product.productId}.jpg`;
 
     }else{
@@ -29,3 +33,16 @@ xhr.onreadystatechange = function () {
     }
 }
 xhr.send();
+
+const productPrice=document.getElementById("productPrice");
+const productQuantity=document.getElementById("productQuantity");
+
+const changePrice=function (e){
+  productPrice.innerHTML=e.target.value *price;
+  console.log(price)
+};
+
+
+productQuantity.addEventListener("input",changePrice);
+productQuantity.addEventListener('propertychange', changePrice);
+
