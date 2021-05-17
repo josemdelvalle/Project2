@@ -1,3 +1,4 @@
+from models.product_cart import ProductCart
 from models.products import Products
 from util_project2.database_connection import connection
 
@@ -6,13 +7,13 @@ class ProductCartDAO:
 
     @staticmethod
     def add_product(product):
-        sql = "INSERT INTO product_cart VALUES(%s, %s, %s, %s) RETURNING *"
+        sql = "INSERT INTO product_cart VALUES(%s, %s, %s, %s, %s) RETURNING *"
         cursor = connection.cursor()
-        cursor.execute(sql, (product["productId"], product["productName"], product["productPrice"],
-                             product["quantity"]))
+        cursor.execute(sql, (product["userId"], product["productId"], product["productName"],
+                             product["productPrice"], product["quantity"]))
         connection.commit()
         record = cursor.fetchone()
-        returned_product = Products(record[0], record[1], record[2], record[3]).json()
+        returned_product = ProductCart(record[0], record[1], record[2], record[3], record[4]).json()
         return returned_product
 
     @staticmethod
@@ -23,7 +24,7 @@ class ProductCartDAO:
         connection.commit()
         record = cursor.fetchone()
         if record:
-            return Products(record[0], record[1], record[2], record[3]).json()
+            return ProductCart(record[0], record[1], record[2], record[3], record[4]).json()
         else:
             return None
 
@@ -36,7 +37,7 @@ class ProductCartDAO:
         records = cursor.fetchall()
         cart_list = []
         for record in records:
-            product = Products(record[0], record[1], record[2], record[3])
+            product = ProductCart(record[0], record[1], record[2], record[3], record[4])
             cart_list.append(product.json())
 
         return cart_list

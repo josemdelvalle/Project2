@@ -37,6 +37,7 @@ class DAOTests(unittest.TestCase):
 
     def test_add_product_to_cart(self):
         test_product = {
+            "userId": 1,
             "productId": 9,
             "productName": "Fudge Ripple",
             "productPrice": 24.0,
