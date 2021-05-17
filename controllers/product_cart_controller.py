@@ -17,3 +17,7 @@ def route(app):
     @app.route("/cart/<product_id>", methods=["DELETE"])
     def delete_item_from_cart(product_id):
         return jsonify(ProductCartService.delete_product_from_cart(product_id))
+
+    @app.route("/purchase/<user_id>", methods=["POST"])
+    def purchase_cart_items(user_id):
+        ProductCartService.purchase_cart_items(user_id)

@@ -15,4 +15,8 @@ class ProductCartService:
 
     @classmethod
     def get_all_products_from_cart(cls):
-        return cls.get_all_products_from_cart()
+        return cls.product_cart_dao.get_all_products()
+
+    @classmethod
+    def purchase_cart_items(cls, user_id):
+        return cls.product_cart_dao.purchase_cart_items(user_id)
