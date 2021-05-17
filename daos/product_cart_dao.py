@@ -6,12 +6,13 @@ class ProductCartDAO:
 
     @staticmethod
     def add_product(product):
-        sql = "INSERT INTO product_cart VALUES(%s, %s, %s) RETURNING *"
+        sql = "INSERT INTO product_cart VALUES(%s, %s, %s, %s) RETURNING *"
         cursor = connection.cursor()
-        cursor.execute(sql, (product["productId"], product["productName"], product["productPrice"]))
+        cursor.execute(sql, (product["productId"], product["productName"], product["productPrice"],
+                             product["quantity"]))
         connection.commit()
         record = cursor.fetchone()
-        returned_product = Products(record[0], record[1], record[2]).json()
+        returned_product = Products(record[0], record[1], record[2], record[3]).json()
         return returned_product
 
     @staticmethod
@@ -22,7 +23,7 @@ class ProductCartDAO:
         connection.commit()
         record = cursor.fetchone()
         if record:
-            return Products(record[0], record[1], record[2]).json()
+            return Products(record[0], record[1], record[2], record[3]).json()
         else:
             return None
 
@@ -35,7 +36,7 @@ class ProductCartDAO:
         records = cursor.fetchall()
         cart_list = []
         for record in records:
-            product = Products(record[0], record[1], record[2])
+            product = Products(record[0], record[1], record[2], record[3])
             cart_list.append(product.json())
 
         return cart_list

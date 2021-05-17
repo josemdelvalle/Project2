@@ -6,8 +6,6 @@ from daos.product_cart_dao import ProductCartDAO
 from models.products import Products
 from models.user import User
 from models.user_credentials import UserCredentials
-from models.product_cart import ProductCart
-from util_project2.database_connection import connection
 
 
 class DAOTests(unittest.TestCase):
@@ -38,8 +36,11 @@ class DAOTests(unittest.TestCase):
         self.assertDictEqual(credentials.json(), test_credentials.json())
 
     def test_add_product_to_cart(self):
-        test_product = Products(
-            9, "Fudge Ripple", 24.0, "Vanilla Ice Cream with Chocolate Fudge").json()
+        test_product = {
+            "productId": 9,
+            "productName": "Fudge Ripple",
+            "productPrice": 24.0,
+            "quantity": 1}
 
         product_cart_dao = ProductCartDAO()
         returned_product = product_cart_dao.add_product(test_product)
@@ -52,4 +53,3 @@ class DAOTests(unittest.TestCase):
     def test_delete_product_from_cart(self):
         product = ProductCartDAO.delete_product_from_cart(9)
         self.assertEqual(product["productId"], 9)
-
