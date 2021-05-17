@@ -40,6 +40,8 @@ To use this application, you will need the following:
 
 Once this is all set up, run app.py and you should be able to access the Web Page via frontend.html.
 
+## Usage
+
 ## Contributors
 * Jose Del Valle
 * Joaquin Bell
