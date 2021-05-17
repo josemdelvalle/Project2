@@ -14,7 +14,7 @@ The Ice Cream Online Store App allows customers to order items online from the I
 * Javalin - version 3.13.6
 * JavaScript - version ES6
 * HTML - version 5.0
-* PostgreSQL - version 12
+* PostgreSQL - version 42.2.1
 
 ## Features
 
