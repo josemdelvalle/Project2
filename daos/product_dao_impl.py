@@ -14,7 +14,7 @@ class ProductDAOImpl(ProductDAO):
             records = cursor.fetchall()
             products = []
             for product in records:
-                products.append(Products(product[0], product[1], product[2], product[3]))
+                products.append(Products(product[0], product[1], product[2], product[3], product[4]))
             return products
         except Exception as e:
             raise ResourceNotFound(f"Credentials do not match any existing records. Please try again.")
@@ -26,7 +26,7 @@ class ProductDAOImpl(ProductDAO):
         cursor.execute(sql, [product_id])
         record = cursor.fetchone()
         if record:
-            return Products(record[0], record[1], record[2], record[3])
+            return Products(record[0], record[1], record[2], record[3], record[4])
         else:
             raise ResourceNotFound(f"Product with {product_id} - Not Found")
 
