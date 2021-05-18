@@ -5,3 +5,9 @@ util_project2/database_connection.py
 venv/pyvenv.cfg
 __pycache__/
 /venv/
+JavaAPI/.idea/compiler.xml
+JavaAPI/.idea/jarRepositories.xml
+JavaAPI/.idea/misc.xml
+JavaAPI/.idea/vcs.xml
+JavaAPI/src/main/resources/connection.properties
+JavaAPI/target/classes/connection.properties
