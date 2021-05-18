@@ -5,22 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0a4ec57-9c34-4a89-8c8f-51a1502520da" name="Default Changelist" comment="created Java API that returns all orders. needs additional implementation to match current orders table in database">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/connection.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/app/App.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/connection.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/controllers/OrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/models/Order.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/repositories/OrderRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/services/OrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/util_orders/JDBCConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../venv/pyvenv.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/../venv/pyvenv.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
