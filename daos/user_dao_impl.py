@@ -1,4 +1,3 @@
-from flask import jsonify, json
 from daos.user_dao import UserDAO
 from exceptions.resource_not_found import ResourceNotFound
 from models.user import User

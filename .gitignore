@@ -2,4 +2,6 @@
 /util_project2/db_connection.py
 util_project2/database_connection.py
 util_project2/database_connection.py
+venv/pyvenv.cfg
+__pycache__/
 /venv/
