@@ -42,7 +42,7 @@ create table orders(
 	order_number bigint not null,
 	quantity int not null,
 	product_id serial REFERENCES products(product_id) ON DELETE cascade 	
-
+	
 );
 
 

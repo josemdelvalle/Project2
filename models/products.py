@@ -7,8 +7,9 @@ class Products:
 
     def json(self):
         return {
-            'product_name': self.product_name,
-            'product_price': float(self.product_price),
+            'productId': self.product_id,
+            'productName': self.product_name,
+            'productPrice': float(self.product_price),
             'description': self.description
         }
 
