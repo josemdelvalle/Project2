@@ -14,7 +14,8 @@ class UserCredentials:
     @staticmethod
     def json_parse(json):
         user_credentials = UserCredentials()
-        user_credentials.user_name = json['userName']if "userName" in json else None
-        user_credentials.password = json['password']if "password" in json else None
-        user_credentials.user_id = json['userId']if "userId" in json else 0
+        user_credentials.user_name = json['userName'] if "userName" in json else None
+        user_credentials.password = json['password'] if "password" in json else None
+        user_credentials.user_id = json['userId'] if "userId" in json else 0
+
         return user_credentials

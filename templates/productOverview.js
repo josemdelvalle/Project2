@@ -11,8 +11,7 @@ var getCookie = (cookie_name) =>{
 document.getElementById("productName").innerHTML =productId;
 
 
-
-var price;
+var product;
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true
 xhr.open("GET", `http://127.0.0.1:5000/products/${productId}`, true);
@@ -38,7 +37,7 @@ const productPrice=document.getElementById("productPrice");
 const productQuantity=document.getElementById("productQuantity");
 
 const changePrice=function (e){
-  productPrice.innerHTML=e.target.value *price;
+  productPrice.innerHTML=e.target.value *product.productPrice;
   console.log(price)
 };
 
