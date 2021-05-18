@@ -37,6 +37,9 @@ public class OrderRepository {
         Order d = new Order();
         d.setOrderId(rs.getInt("order_id"));
         d.setOrderNumber(rs.getInt("order_number"));
+        d.setQuantity(rs.getInt("quantity"));
+        d.setProduct_id(rs.getInt("product_id"));
+        d.setUser_id(rs.getInt("user_id"));
         return d;
     }
 }
