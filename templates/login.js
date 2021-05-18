@@ -1,3 +1,4 @@
+var user;
 const btn = document.getElementById('loginButton');
 btn.addEventListener('click', (e) => {
     e.preventDefault(); // disable the refresh on the page when submit
@@ -15,20 +16,27 @@ btn.addEventListener('click', (e) => {
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText)
-            responseObject= JSON.parse(this.responseText);
-            console.log(responseObject);
-        
-        document.cookie = `firstName=${responseObject.firstName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html`;
-        document.cookie = `lastName=${responseObject.lastName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html`;
-        document.cookie = "Logedin=True; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html";
-        document.location.href = "storePage.html";
-    
+            user = JSON.parse(this.responseText);
+
+            if (user.isAdmin == true) {
+                document.cookie = `firstName=${user.firstName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/adminPage.html`;
+                document.cookie = `lastName=${user.lastName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/adminPage.html`;
+                document.cookie = "Logedin=True; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/adminPage.html";
+                document.location.href = "adminPage.html";
+            
+            } else {
+                document.cookie = `firstName=${user.firstName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html`;
+                document.cookie = `lastName=${user.lastName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html`;
+                document.cookie = "Logedin=True; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html";
+                document.location.href = "storePage.html";
+
+            }
 
 
-        }else{
+        } else {
             console.log(this.responseText);
             // document.cookie = "isLogedin?=False; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html";
         }
     }
-    
+
 });
