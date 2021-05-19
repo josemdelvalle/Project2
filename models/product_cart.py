@@ -1,6 +1,6 @@
 class ProductCart:
 
-    def __init__(self, cart_id=None, user_id=None, product_id=None, product_name=None, product_price=None,
+    def __init__(self, cart_id=None, product_id=None, user_id=None, product_name=None, product_price=None,
                  quantity=None):
         self.cart_id = cart_id
         self.user_id = user_id

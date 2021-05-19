@@ -2,7 +2,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-image: url("imgs/loginBackground.jpg");
+    background-image: url("/imgs/loginBackground.jpg");
     background-size: cover;
     /* <------ */
     background-repeat: no-repeat;

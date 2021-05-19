@@ -2,12 +2,15 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/myCart.css">
     <title>Document</title>
 </head>
 
@@ -15,41 +18,45 @@
     <div class="container p-0">
         <nav class="navbar navbar-light text-font">
             <span id="logo">FSFT<i class="fas fa-ice-cream" id="logoIceCream"></i></span>
-            <button class=" ml-auto mr-1 cartBtn " onclick="goToCart()">Go to cart! <i class="fas fa-shopping-cart"></i></button>
         </nav>
-
         <div class="row p-0 mt-4  text-font ">
             <div class="col">
                 <button class="ml-5 cartBtn"> <i class="fas fa-arrow-circle-left"></i> Go Back</button>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <h3 >Your Order:</h3>
-                <div class="row">
+        <div class="row p-2">
+            <div class="col border-right">
+                <div class="row mb-4">
                     <div class="col">
-                        your items
+                        <h3 class="ml-5 text-font  p-0">Your order:</h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        your items
+                        <h3 class="ml-5 p-0">Product</h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        your items
+                        <h3 class="ml-5 p-0">Product</h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        your items
+                        <h3 class="ml-5 p-0">Product</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h3 class="ml-5 p-0">Product</h3>
                     </div>
                 </div>
             </div>
             <div class="col">
-                
+                <h3 class="ml-5 text-font  p-0">Total:$<span id="totalPrice">10</span></h3>
+                <div></div>
             </div>
+
         </div>
 
         <footer class="page-footer">
@@ -104,10 +111,10 @@
 
         </footer>
     </div>
-   
 
 
-    
+
+
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
