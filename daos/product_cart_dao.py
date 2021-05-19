@@ -1,4 +1,5 @@
 from daos.orders_dao_impl import OrdersDAOImpl
+from exceptions.resource_not_found import ResourceNotFound
 from models.orders import Orders
 from models.product_cart import ProductCart
 from models.products import Products
@@ -15,9 +16,12 @@ class ProductCartDAO:
                              product_cart.product_name, product_cart.product_price, product_cart.quantity])
         connection.commit()
         record = cursor.fetchone()
-        returned_product = ProductCart(record[0], record[1], record[2], record[3], record[4], record[5])
-
-        return returned_product
+        if record:
+            returned_product = ProductCart(record[0], record[1], record[2], record[3], record[4], record[5])
+            print(record)
+            return returned_product
+        else:
+            raise ResourceNotFound(f"User with ID {product_cart.user_id} does not exist. Please try again.")
 
     @staticmethod
     def delete_product_from_cart(product_id):
@@ -44,6 +48,24 @@ class ProductCartDAO:
             cart_list.append(product.json())
 
         return cart_list
+
+    @staticmethod
+    def get_all_products_from_cart_by_user_id(user_id):
+        sql = "SELECT * FROM product_cart where user_id = %s"
+        cursor = connection.cursor()
+        cursor.execute(sql, [user_id])
+        connection.commit()
+        records = cursor.fetchall()
+        cart_list = []
+        if records:
+            for record in records:
+                product = ProductCart(record[0], record[1], record[2], record[3], record[4], record[5])
+                cart_list.append(product)
+            return cart_list
+        else:
+            raise ResourceNotFound(f"User with ID {user_id} does not exist. Please try again.")
+
+
 
     @staticmethod
     def purchase_cart_items(user_id):

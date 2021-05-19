@@ -24,6 +24,13 @@ def route(app):
     def get_all_products_in_cart():
         return jsonify(ProductCartService.get_all_products_from_cart())
 
+    @app.route("/cart/<user_id>", methods=["GET"])
+    def get_all_products_in_cart_by_id(user_id):
+        try:
+            return jsonify(ProductCartService.get_all_products_from_cart_by_user_id(user_id).json)
+        except ResourceNotFound as r:
+            return r.message
+
     @app.route("/cart/<product_id>", methods=["DELETE"])
     def delete_item_from_cart(product_id):
         return jsonify(ProductCartService.delete_product_from_cart(product_id))

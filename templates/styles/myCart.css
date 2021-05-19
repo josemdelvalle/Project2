@@ -4,13 +4,13 @@ body {
     margin: 0;
     padding: 0;
     background-color:rgb(163, 255, 255);
+    /* background-image: url("imgs/storePageBG3.jpg"); */
     background-size: cover;
     /* <------ */
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
 }
-
 .container {
     background-color: rgb(255, 255, 255);
 
@@ -20,6 +20,7 @@ body {
     background-color: rgb(163, 255, 255);
 }
 
+
 #logo {
     color: rgb(255, 255, 255);
     font-size: 30px;
@@ -28,7 +29,6 @@ body {
 #logoIceCream {
     color: rgb(255, 255, 255);
 }
-
 .cartBtn {
     border: 2px solid white;
     text-align: center;
@@ -50,22 +50,10 @@ body {
     background: white;
     outline: 0;
 }
-/* https://via.placeholder.com/258x180.png?text=Visit+WhoIsHostingThis.com+Buyers+GuideC/O https://placeholder.com/#How_To_Use_Our_Placeholders */
+
 .page-footer {
     background-color: rgb(163, 255, 255);
 }
-
-hr {
-    border: 0;
-    border-top: 1px solid #dee3e6;
-}
 .text-font{
     font-family: 'Pacifico', cursive;
-}
-
-.productImg{
-    height: 70%;
-    width: 70%;
-    border: 3px solid rgb(163, 255, 255);
-
 }
