@@ -7,11 +7,7 @@ var getCookie = (cookie_name) =>{
       return "this-cookie-doesn't-exist";
     }
   }
-  
-  firstName=getCookie("firstName");
-  isLogedin=getCookie("Logedin");
-  console.log(isLogedin);
-  
-  if (isLogedin=="False"){
+  userId=getCookie("userId");
+  if (userId==false){
     window.location.href = "/login.html";
   }

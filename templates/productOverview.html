@@ -9,14 +9,16 @@
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="storePageOverview.css">
+    <link rel="stylesheet" href="/styles/productOverview.css">
+    <script src="/scripts/checkLogin.js"></script>
 </head>
 
 <body>
     <div class="container p-0">
         <nav class="navbar navbar-light text-font">
             <span id="logo">FSFT<i class="fas fa-ice-cream" id="logoIceCream"></i></span>
-            <button class=" ml-auto mr-1 cartBtn " id="">Go to cart! <i class="fas fa-shopping-cart"></i></button>
+            <button class=" ml-auto mr-1 cartBtn " onclick="goToCart()">Go to cart! <i
+                    class="fas fa-shopping-cart"></i></button>
         </nav>
 
         <div class="row p-0 mt-4  text-font ">
@@ -34,15 +36,17 @@
             <div class="col  text-center p-3 border-right">
                 <div><img class="productImg p-2" id="productImg" src="/imgs/1.jpg" alt=""></div>
             </div>
-            <div class="col p-3"> 
-            <div id="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, neque mollitia illum ullam a labore ut possimus vitae atque ab, rerum reprehenderit veritatis error, aliquid magnam at voluptate expedita molestias.</div>
-            <br>
-            <div>Quantity: <input type="number"  min="1" max="999"value="1" id="productQuantity" ></div>
-            <br>
-            <div>$: <span  id="productPrice" ></span></div>
-            <br>
-            <div><button class="cartBtn" id="addCartButton"> Add to cart</button></div>   
-        </div>
+            <div class="col p-3">
+                <div id="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, neque
+                    mollitia illum ullam a labore ut possimus vitae atque ab, rerum reprehenderit veritatis error,
+                    aliquid magnam at voluptate expedita molestias.</div>
+                <br>
+                <div>Quantity: <input type="number" min="1" max="999" value="1" id="productQuantity"></div>
+                <br>
+                <div>$: <span id="productPrice"></span></div>
+                <br>
+                <div><button class="cartBtn" id="addCartButton" onclick="addToCart()"> Add to cart</button></div>
+            </div>
         </div>
 
 
@@ -113,7 +117,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-        <script src="productOverview.js"></script>
+    <script type="text/javascript" src="/scripts/productOverview.js"></script>
+    <script src="/scripts/goToCart.js"></script>
 </body>
 
 </html>

@@ -6,8 +6,8 @@ class ProductCartService:
     product_cart_dao = ProductCartDAO
 
     @classmethod
-    def add_product_to_cart(cls, product):
-        return cls.product_cart_dao.add_product(product)
+    def add_product_to_cart(cls, product_cart):
+        return cls.product_cart_dao.add_product(product_cart)
 
     @classmethod
     def delete_product_from_cart(cls, product_id):
