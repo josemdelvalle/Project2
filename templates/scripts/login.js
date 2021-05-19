@@ -3,7 +3,7 @@ const btn = document.getElementById('loginButton');
 btn.addEventListener('click', (e) => {
     e.preventDefault(); // disable the refresh on the page when submit
     var xhr = new XMLHttpRequest();
-    xhr.withCredentials = true
+    xhr.withCredentials = true;
     const username = document.getElementById('usernameInput').value;
     const password = document.getElementById('passwordInput').value;
     xhr.open("POST", "http://127.0.0.1:5000/login", true);
@@ -19,23 +19,19 @@ btn.addEventListener('click', (e) => {
             user = JSON.parse(this.responseText);
 
             if (user.isAdmin == true) {
-                document.cookie = `firstName=${user.firstName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/adminPage.html`;
-                document.cookie = `lastName=${user.lastName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/adminPage.html`;
-                document.cookie = "Logedin=True; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/adminPage.html";
+                document.cookie = `userId=${user.userId}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/adminPage.html`;
                 document.location.href = "adminPage.html";
             
             } else {
-                document.cookie = `firstName=${user.firstName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html`;
-                document.cookie = `lastName=${user.lastName}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html`;
-                document.cookie = "Logedin=True; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html";
+                document.cookie = `userId=${user.userId}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html`;
+                document.cookie = `userId=${user.userId}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/productOverview.html`;
+                document.cookie = `userId=${user.userId}; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/adminPage.html`;
                 document.location.href = "storePage.html";
-
             }
 
 
         } else {
             console.log(this.responseText);
-            // document.cookie = "isLogedin?=False; expires=Thu, 18 Dec 2021 12:00:00 UTC; path=/storePage.html";
         }
     }
 

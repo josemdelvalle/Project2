@@ -8,14 +8,15 @@ from util_project2.database_connection import connection
 class ProductCartDAO:
 
     @staticmethod
-    def add_product(product):
-        sql = "INSERT INTO product_cart VALUES(%s, %s, %s, %s, %s) RETURNING *"
+    def add_product(product_cart):
+        sql = "INSERT INTO product_cart VALUES(default,%s, %s, %s, %s, %s) RETURNING *"
         cursor = connection.cursor()
-        cursor.execute(sql, (product["userId"], product["productId"], product["productName"],
-                             product["productPrice"], product["quantity"]))
+        cursor.execute(sql, [product_cart.product_id, product_cart.user_id,
+                             product_cart.product_name, product_cart.product_price, product_cart.quantity])
         connection.commit()
         record = cursor.fetchone()
-        returned_product = ProductCart(record[0], record[1], record[2], record[3], record[4]).json()
+        returned_product = ProductCart(record[0], record[1], record[2], record[3], record[4], record[5])
+
         return returned_product
 
     @staticmethod
