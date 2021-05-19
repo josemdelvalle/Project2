@@ -2,7 +2,6 @@ from daos.orders_dao_impl import OrdersDAOImpl
 from exceptions.resource_not_found import ResourceNotFound
 from models.orders import Orders
 from models.product_cart import ProductCart
-from models.products import Products
 from util_project2.database_connection import connection
 
 
@@ -12,8 +11,8 @@ class ProductCartDAO:
     def add_product(product_cart):
         sql = "INSERT INTO product_cart VALUES(default,%s, %s, %s, %s, %s) RETURNING *"
         cursor = connection.cursor()
-        cursor.execute(sql, [product_cart.product_id, product_cart.user_id,
-                             product_cart.product_name, product_cart.product_price, product_cart.quantity])
+        cursor.execute(sql, [product_cart["productId"], product_cart["userId"],
+                             product_cart["productName"], product_cart["productPrice"], product_cart["quantity"]])
         connection.commit()
         record = cursor.fetchone()
         if record:
@@ -64,8 +63,6 @@ class ProductCartDAO:
             return cart_list
         else:
             raise ResourceNotFound(f"User with ID {user_id} does not exist. Please try again.")
-
-
 
     @staticmethod
     def purchase_cart_items(user_id):
