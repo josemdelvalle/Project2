@@ -28,5 +28,5 @@ class ProductDAOImpl(ProductDAO):
         if record:
             return Products(record[0], record[1], record[2], record[3], record[4])
         else:
-            raise ResourceNotFound(f"Product with {product_id} - Not Found")
+            raise ResourceNotFound(f"Product with ID {product_id} - Not Found")
 

@@ -4,6 +4,7 @@ from daos.orders_dao_impl import OrdersDAOImpl
 from daos.product_cart_dao import ProductCartDAO
 from daos.product_dao_impl import ProductDAOImpl
 from daos.user_dao_impl import UserDAOImpl
+from exceptions.resource_not_found import ResourceNotFound
 from models.orders import Orders
 from models.product_cart import ProductCart
 from models.user import User
@@ -11,32 +12,56 @@ from models.user_credentials import UserCredentials
 
 
 class DAOTests(unittest.TestCase):
+    # Product DAO
     def test_get_all_products(self):
         products = ProductDAOImpl().get_products()
+        self.assertEqual(type(products), type([]))
+
+    def test_get_product_by_id_success(self):
         test_product = {
             "productId": 9,
             "description": "Vanilla Ice Cream with Chocolate Fudge",
             "productName": "Fudge Ripple",
-            "productPrice": 24.0
+            "productPrice": 24.0,
+            "productType": "MilkShake"
         }
-        for product in products:
-            try:
-                return self.assertDictEqual(product.json(), test_product)
-            except AssertionError:
-                continue
+        product = ProductDAOImpl().get_product_id(test_product["productId"])
+        self.assertDictEqual(product.json(), test_product)
 
-        assert False
+    def test_get_product_by_id_failure(self):
+        test_product = {
+            "productId": -1,
+            "description": "Does not exist in this store",
+            "productName": "Garbage",
+            "productPrice": 0.0,
+            "productType": "Garbage"
+        }
 
-    def test_get_user_by_id(self):
+        try:
+            ProductDAOImpl().get_product_id(test_product["productId"])
+            raise AssertionError("There is no product by that ID.")
+        except ResourceNotFound as r:
+            self.assertEqual(r.message, "Product with ID -1 - Not Found")
+
+    # User DAO
+    def test_get_user_by_id_success(self):
         user = UserDAOImpl.get_user_by_id(1)
-        expected = User(1, "Jose", "Del")
+        expected = User(1, "Jose", "Del Valle")
         self.assertDictEqual(user.json(), expected.json())
+
+    def test_get_user_by_id_failure(self):
+        try:
+            UserDAOImpl.get_user_by_id(-1)
+            raise AssertionError("No User exists by that id.")
+        except ResourceNotFound as r:
+            self.assertEqual(r.message, "User with ID -1 does not exist. Please try again.")
 
     def test_get_user_credentials(self):
         credentials = UserCredentials("jose", "12345", 1)
         test_credentials = UserDAOImpl.get_user_credentials(credentials)
         self.assertDictEqual(credentials.json(), test_credentials.json())
 
+    # Product Cart DAO
     def test_add_product_to_cart(self):
         test_product = {
             "userId": 1,
@@ -63,5 +88,6 @@ class DAOTests(unittest.TestCase):
         returned_order = OrdersDAOImpl.add_order(order)
         self.assertEqual(returned_order.order_number, order.order_number)
 
+    # Order DAO
     def test_order_number(self):
         self.assertIsNotNone(OrdersDAOImpl.return_largest_order_number())
