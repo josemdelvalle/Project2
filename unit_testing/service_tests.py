@@ -47,4 +47,34 @@ class ServiceTests(unittest.TestCase):
         returned_product_cart = ProductCartService.add_product_to_cart(test_product_cart)
         self.assertEqual(type(returned_product_cart), type(test_product_cart))
 
-    
+    @staticmethod
+    def test_get_all_products_from_cart_by_user_id():
+        product_cart_items = ProductCartService.get_all_products_from_cart_by_user_id("1")
+        for product in product_cart_items:
+            if product["userId"] == "1":
+                continue
+            else:
+                assert False
+
+        assert True
+
+    def test_purchase_cart_items(self):
+        # Create items to add to the cart in order to purchase them
+        # This will technically test multiple methods
+        test_product1 = ProductCart(5, 5, 1, "Banana Cream Pie", 6, 6)
+        test_product2 = ProductCart(5, 5, 3, "Banana Chocolate Chip", 13, 2)
+        test_product3 = ProductCart(5, 5, 17, "Peanut Butter & Graham", 9, 1)
+        test_product4 = ProductCart(5, 5, 21, "Pumpkin", 11, 4)
+        all_test_products = [test_product1, test_product2, test_product3, test_product4]
+        ProductCartService.add_product_to_cart(all_test_products[0])
+        ProductCartService.add_product_to_cart(all_test_products[1])
+        ProductCartService.add_product_to_cart(all_test_products[2])
+        ProductCartService.add_product_to_cart(all_test_products[3])
+        purchased_products = ProductCartService.purchase_cart_items(5)
+        for i in range(len(purchased_products)):
+            if purchased_products[i] == all_test_products[i]:
+                continue
+            else:
+                assert False
+
+        assert True
