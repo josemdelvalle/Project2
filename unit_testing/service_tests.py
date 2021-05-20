@@ -70,7 +70,7 @@ class ServiceTests(unittest.TestCase):
         ProductCartService.add_product_to_cart(all_test_products[1])
         ProductCartService.add_product_to_cart(all_test_products[2])
         ProductCartService.add_product_to_cart(all_test_products[3])
-        purchased_products = ProductCartService.purchase_cart_items(5)
+        purchased_products = ProductCartService.purchase_cart_items("5")
         for i in range(len(purchased_products)):
             if purchased_products[i] == all_test_products[i]:
                 continue
