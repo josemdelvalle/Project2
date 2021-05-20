@@ -5,7 +5,7 @@ from services.orders_service import OrdersService
 
 class OrdersServiceImpl(OrdersService):
     @classmethod
-    def get_orders(ccls):
+    def get_orders(cls):
         try:
             list_of_orders = OrdersDAOImpl.get_orders()
             if list_of_orders:
