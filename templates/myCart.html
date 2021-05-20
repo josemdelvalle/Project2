@@ -25,54 +25,40 @@
                 <button class="ml-5 cartBtn"> <i class="fas fa-arrow-circle-left"></i> Go Back</button>
             </div>
         </div>
-        <div class="row p-2">
+        <div class="row p-2 text-font">
             <div class="col border-right">
                 <div class="row mb-4">
                     <div class="col">
-                        <h3 class="ml-5 text-font  p-0">Your order:</h3>
+                        <h3 class="ml-5  p-0">Your order:</h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <table>
+                        <table class="ml-5 p-0">
                             <thead>
                               <tr>
-                                <th>header1</th>
-                                <th>header2</th>
-                                <th>header3</th>
+                                <th>Name</th>
+                                <th>Cost</th>
+                                <th>Quantity</th>
+                                <th>Discard</th>
+
                               </tr>
                              </thead>
-                             <tbody>
-                               <tr>
-                                 <td>text1.1</td>
-                                 <td>text1.2</td>
-                                 <td>text1.3</td>
-                               </tr>
-                               <tr>
-                                 <td>text2.1</td>
-                                 <td>text2.2</td>
-                                 <td>text2.3</td>
-                               </tr>
-                               <tr>
-                                 <td>text3.1</td>
-                                 <td>text3.2</td>
-                                 <td>text3.3</td>
-                               </tr>
-                               <tr>
-                               </tr>
+                             <tbody id="tableContent">
+                             
                             </tbody>
                           </table>
-                        <span class="ml-5 p-0">Banana Chocolate Chip</span>
-                        <span class="ml-5 p-0">13.0</span>
-                        <span class="ml-5 p-0">1</span>
+                
                
                     </div>
                 </div>
                 
             </div>
             <div class="col">
-                <h3 class="ml-5 text-font  p-0">Total:$<span id="totalPrice">10</span></h3>
-                <div></div>
+                <h3 class="ml-5 text-font  p-0">Total:$<span id="totalPrice"></span></h3>
+                <br>
+                <br>
+                <div class="ml-5"> <button class="cartBtn">Submit your order!</button></div>
             </div>
 
         </div>

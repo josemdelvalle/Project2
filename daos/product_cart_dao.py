@@ -11,13 +11,12 @@ class ProductCartDAO:
     def add_product(product_cart):
         sql = "INSERT INTO product_cart VALUES(default,%s, %s, %s, %s, %s) RETURNING *"
         cursor = connection.cursor()
-        cursor.execute(sql, [product_cart["productId"], product_cart["userId"],
-                             product_cart["productName"], product_cart["productPrice"], product_cart["quantity"]])
+        cursor.execute(sql, [product_cart.product_id, product_cart.user_id,
+                             product_cart.product_name, product_cart.product_price, product_cart.quantity])
         connection.commit()
         record = cursor.fetchone()
         if record:
             returned_product = ProductCart(record[0], record[1], record[2], record[3], record[4], record[5])
-            print(record)
             return returned_product
         else:
             raise ResourceNotFound(f"User with ID {product_cart.user_id} does not exist. Please try again.")
