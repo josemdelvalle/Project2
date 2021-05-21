@@ -9,7 +9,7 @@ class OrdersDAOImpl(OrdersDAO):
     @classmethod
     def get_orders(cls):
         try:
-            sql = "SELECT * FROM orders;"
+            sql = "SELECT * FROM orders"
             cursor = connection.cursor()
             cursor.execute(sql)
             records = cursor.fetchall()
@@ -22,7 +22,7 @@ class OrdersDAOImpl(OrdersDAO):
 
     @classmethod
     def add_order(cls, order):
-        sql = "INSERT INTO orders values(default, %s, %s, %s, %s) RETURNING *"
+        sql = "INSERT INTO orders VALUES(default, %s, %s, %s, %s) RETURNING *"
         cursor = connection.cursor()
         cursor.execute(sql, (order.order_number, order.quantity, order.product_id, order.user_id))
         connection.commit()

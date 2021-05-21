@@ -5,7 +5,7 @@ from daos.product_cart_dao import ProductCartDAO
 from daos.product_dao_impl import ProductDAOImpl
 from daos.user_dao_impl import UserDAOImpl
 from exceptions.resource_not_found import ResourceNotFound
-from models.order import Orders
+from models.order import Order
 from models.product_cart import ProductCart
 from models.user import User
 from models.user_credentials import UserCredentials
@@ -63,28 +63,23 @@ class DAOTests(unittest.TestCase):
 
     # Product Cart DAO
     def test_add_product_to_cart(self):
-        test_product = {
-            "userId": 1,
-            "productId": 9,
-            "productName": "Fudge Ripple",
-            "productPrice": 24.0,
-            "quantity": 1}
+        test_product = ProductCart(1, 9, "Fudge Ripple", 24.0, 1, 3)
 
         product_cart_dao = ProductCartDAO()
         returned_product = product_cart_dao.add_product(test_product)
-        self.assertEqual(returned_product.product_id, test_product["productId"])
+        self.assertEqual(returned_product.product_id, test_product.product_id)
 
     def test_get_all_cart_items(self):
         all_products = ProductCartDAO.get_all_products()
         self.assertIsNotNone(all_products)
 
-    def test_delete_product_from_cart(self):
-        product = ProductCartDAO.delete_product_from_cart(9)
-        self.assertEqual(product["productId"], 9)
+    # def test_delete_product_from_cart(self):
+    #     product = ProductCartDAO.delete_product_from_cart(9)
+    #     self.assertEqual(product["productId"], 9)
 
     def test_purchase_order(self):
         # test_product = ProductCart(1, 9, "Fudge Ripple", 24.0, 1)
-        order = Orders(1, 1, 1, 9, 1)
+        order = Order(1, 2, 1, 9, 1)
         returned_order = OrdersDAOImpl.add_order(order)
         self.assertEqual(returned_order.order_number, order.order_number)
 
