@@ -12,4 +12,4 @@ class UserServiceImpl(UserService):
     @classmethod
     def get_user_credentials(cls, user_credentials):
         user = UserDAOImpl.get_user_credentials(user_credentials)
-        return user.user_id
+        return user

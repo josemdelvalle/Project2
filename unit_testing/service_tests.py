@@ -3,9 +3,11 @@ import unittest
 from exceptions.resource_not_found import ResourceNotFound
 from models.product_cart import ProductCart
 from models.products import Products
+from models.user_credentials import UserCredentials
 from services.orders_service_impl import OrdersServiceImpl
 from services.product_cart_service import ProductCartService
 from services.product_service_Impl import ProductServiceImpl
+from services.user_service_impl import UserServiceImpl
 
 
 class ServiceTests(unittest.TestCase):
@@ -58,7 +60,8 @@ class ServiceTests(unittest.TestCase):
 
         assert True
 
-    def test_purchase_cart_items(self):
+    @staticmethod
+    def test_purchase_cart_items():
         # Create items to add to the cart in order to purchase them
         # This will technically test multiple methods
         test_product1 = ProductCart(5, 5, 1, "Banana Cream Pie", 6, 6)
@@ -78,3 +81,13 @@ class ServiceTests(unittest.TestCase):
                 assert False
 
         assert True
+
+    # User Service
+    def test_get_user_by_id(self):
+        user = UserServiceImpl.get_user_by_id(5)
+        self.assertEqual(user.user_id, 5)
+
+    def test_get_user_credentials(self):
+        credentials = UserCredentials("jose", "12345", 1)
+        test_credentials = UserServiceImpl.get_user_credentials(credentials)
+        self.assertDictEqual(credentials.json(), test_credentials.json())
