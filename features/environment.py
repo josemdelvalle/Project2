@@ -7,6 +7,7 @@ from features.pages.store_page import StorePage
 def before_all(context):
     print("started")
     driver: WebDriver = webdriver.Chrome('G:/RevatureWork/SeleniumDrivers/chromedriver.exe')
+    driver.implicitly_wait(2)
     login_page = LoginHomePage(driver)
     store_page = StorePage(driver)
     context.driver = driver

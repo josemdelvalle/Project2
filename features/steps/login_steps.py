@@ -2,12 +2,13 @@ from time import sleep
 from behave import when, given, then
 from selenium.webdriver.chrome.webdriver import WebDriver
 
+from features.pages.login_page import LoginHomePage
+
 
 @given(u'The User is on the Project 1 LogIn Page')
 def go_to_login_page(context):
-    driver: WebDriver = context.driver
-    driver.maximize_window()
-    driver.get('G:/Project2/templates/login.html')
+    login: LoginHomePage = context.login_page
+    login.url()
     # sleep(5)
 
 

@@ -9,7 +9,7 @@ Feature: Customer Login
 
         Examples:
       |username | password| message   |
-      |jose   |12345    | Logged in |
-#      |Jose     |Del Valle| Logged in |
+      | jose  | 12345 | Logged in |
+      | serene| 12345 | Logged in |
 #      |Alex     |Al       | Logged in |
 #      |Joe      |Williams | Logged in |
