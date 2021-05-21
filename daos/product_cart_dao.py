@@ -1,6 +1,6 @@
 from daos.orders_dao_impl import OrdersDAOImpl
 from exceptions.resource_not_found import ResourceNotFound
-from models.orders import Orders
+from models.order import Order
 from models.product_cart import ProductCart
 from util_project2.database_connection import connection
 
@@ -22,16 +22,16 @@ class ProductCartDAO:
             raise ResourceNotFound(f"User with ID {product_cart.user_id} does not exist. Please try again.")
 
     @staticmethod
-    def delete_product_from_cart(product_id):
-        sql = "DELETE FROM product_cart WHERE product_id = %s RETURNING *"
+    def delete_product_from_cart(cart_id):
+        sql = "DELETE FROM product_cart WHERE product_cart_id = %s RETURNING *"
         cursor = connection.cursor()
-        cursor.execute(sql, [product_id])
+        cursor.execute(sql, [cart_id])
         connection.commit()
         record = cursor.fetchone()
         if record:
             return ProductCart(record[0], record[1], record[2], record[3], record[4]).json()
         else:
-            return None
+            raise ResourceNotFound(f"Cart with ID {cart_id} does not exist. Please try again.")
 
     @staticmethod
     def get_all_products():
@@ -73,7 +73,7 @@ class ProductCartDAO:
         records = cursor.fetchall()
         # Then hold each item into a list to be exported to the orders table
         purchased_products = []
-        order = Orders()
+        order = Order()
         for record in records:
             product = ProductCart(record[0], record[1], record[2], record[3], record[4])
             purchased_products.append(product.json())

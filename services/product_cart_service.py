@@ -9,8 +9,8 @@ class ProductCartService:
         return cls.product_cart_dao.add_product(product_cart)
 
     @classmethod
-    def delete_product_from_cart(cls, product_id):
-        return cls.product_cart_dao.delete_product_from_cart(product_id)
+    def delete_product_from_cart(cls, cart_id):
+        return cls.product_cart_dao.delete_product_from_cart(cart_id)
 
     @classmethod
     def get_all_products_from_cart(cls):

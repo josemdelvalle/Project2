@@ -18,9 +18,6 @@ const changePrice = function (e) {
 productQuantity.addEventListener("input", changePrice);
 productQuantity.addEventListener('propertychange', changePrice);
 
-
-
-
 //getting the product from the database
 //assigning the product variable
 var xhr = new XMLHttpRequest();
@@ -59,6 +56,9 @@ function addToCart() {
     quantity: qty
   }));
   xhr2.onreadystatechange = function () {
-    console.log(this.responseText)
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("confirmationText").innerHTML ="Product added to cart!";
+    }
+    
   }
 }

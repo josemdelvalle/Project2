@@ -10,7 +10,8 @@ class ProductCart:
         self.quantity = quantity
 
     def json(self):
-        return {"userId": self.user_id,
+        return {"cartId": self.cart_id,
+                "userId": self.user_id,
                 "productId": self.product_id,
                 "productName": self.product_name,
                 "productPrice": float(self.product_price),
@@ -19,6 +20,7 @@ class ProductCart:
     @staticmethod
     def json_parse(json):
         product_cart = ProductCart()
+        product_cart.user_id = json["cartId"] if "cartId" in json else None
         product_cart.user_id = json["userId"] if "userId" in json else None
         product_cart.product_id = json["productId"] if "productId" in json else None
         product_cart.product_name = json["productName"] if "productName" in json else None

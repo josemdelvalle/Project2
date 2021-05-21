@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/myCart.css">
     <script src="/scripts/checkLogin.js"></script>
-    <title>Document</title>
+    <title>My Cart</title>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
             <div class="col border-right">
                 <div class="row mb-4">
                     <div class="col">
-                        <h3 class="ml-5  p-0">Your order:</h3>
+                        <h3 class="ml-5  p-0">  Your order:</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -54,11 +54,11 @@
                 </div>
                 
             </div>
-            <div class="col">
-                <h3 class="ml-5 text-font  p-0">Total:$<span id="totalPrice"></span></h3>
+            <div class="col text-font">
+                <h3 class="ml-5   p-0">Total:$<span id="totalPrice"></span></h3>
                 <br>
                 <br>
-                <div class="ml-5"> <button class="cartBtn">Submit your order!</button></div>
+                <div class="ml-5"> <button id="submitOrderBtn" class="cartBtn" onclick="addOrder()">Submit your order!</button></div>
             </div>
 
         </div>

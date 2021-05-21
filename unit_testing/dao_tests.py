@@ -5,7 +5,7 @@ from daos.product_cart_dao import ProductCartDAO
 from daos.product_dao_impl import ProductDAOImpl
 from daos.user_dao_impl import UserDAOImpl
 from exceptions.resource_not_found import ResourceNotFound
-from models.orders import Orders
+from models.order import Orders
 from models.product_cart import ProductCart
 from models.user import User
 from models.user_credentials import UserCredentials

@@ -1,4 +1,4 @@
-class Orders:
+class Order:
     def __init__(self, order_id=None, order_number=None, quantity=None, product_id=None, user_id=None):
         self.order_id = order_id
         self.order_number = order_number
@@ -17,7 +17,8 @@ class Orders:
 
     @staticmethod
     def json_parse(json):
-        orders = Orders()
+        orders = Order()
+        orders.product_name = json['orderId'] if "orderId" in json else None
         orders.product_name = json['orderNumber'] if "order_number" in json else None
         orders.product_price = json['quantity'] if "quantity" in json else None
         orders.description = json['productId'] if "product_id" in json else None

@@ -31,9 +31,13 @@ def route(app):
         except ResourceNotFound as r:
             return r.message, 404
 
-    @app.route("/cart/<product_id>", methods=["DELETE"])
-    def delete_item_from_cart(product_id):
-        return jsonify(ProductCartService.delete_product_from_cart(product_id))
+    @app.route("/cart/<cart_id>", methods=["DELETE"])
+    def delete_item_from_cart(cart_id):
+        try:
+            print("here")
+            return jsonify(ProductCartService.delete_product_from_cart(cart_id))
+        except ResourceNotFound as r:
+            return r.message, 404
 
     @app.route("/purchase/<user_id>", methods=["POST"])
     def purchase_cart_items(user_id):
