@@ -6,7 +6,7 @@ from services.product_service import ProductService
 class ProductServiceImpl(ProductService):
     @classmethod
     def get_product_by_id(cls, product_id):
-        product=ProductDAOImpl.get_product_id(product_id)
+        product = ProductDAOImpl.get_product_id(product_id)
         return product
 
     @classmethod

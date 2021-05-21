@@ -65,7 +65,7 @@ class ProductCartDAO:
 
     @staticmethod
     def purchase_cart_items(user_id):
-        # First want to grab everything from the databse to add to the orders table
+        # First want to grab everything from the database to add to the orders table
         sql = "SELECT * FROM product_cart WHERE user_id = %s"
         cursor = connection.cursor()
         cursor.execute(sql, [user_id])

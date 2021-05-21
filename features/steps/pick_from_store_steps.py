@@ -28,4 +28,4 @@ def user_clicks_on_product(context):
 @then(u'The user goes to that product\'s description page')
 def user_on_item_overview_page(context):
     sleep(1)
-    assert context.driver.title != ""
+    assert context.driver.title != "Store Page"
