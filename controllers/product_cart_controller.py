@@ -27,9 +27,9 @@ def route(app):
     @app.route("/cart/<user_id>", methods=["GET"])
     def get_all_products_in_cart_by_id(user_id):
         try:
-            return jsonify(ProductCartService.get_all_products_from_cart_by_user_id(user_id).json)
+            return jsonify(ProductCartService.get_all_products_from_cart_by_user_id(user_id)), 200
         except ResourceNotFound as r:
-            return r.message
+            return r.message, 404
 
     @app.route("/cart/<product_id>", methods=["DELETE"])
     def delete_item_from_cart(product_id):

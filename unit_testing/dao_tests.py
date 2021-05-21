@@ -72,7 +72,7 @@ class DAOTests(unittest.TestCase):
 
         product_cart_dao = ProductCartDAO()
         returned_product = product_cart_dao.add_product(test_product)
-        self.assertEqual(returned_product["productId"], test_product["productId"])
+        self.assertEqual(returned_product.product_id, test_product["productId"])
 
     def test_get_all_cart_items(self):
         all_products = ProductCartDAO.get_all_products()
@@ -83,8 +83,8 @@ class DAOTests(unittest.TestCase):
         self.assertEqual(product["productId"], 9)
 
     def test_purchase_order(self):
-        test_product = ProductCart(1, "9", "Fudge Ripple", 24.0, 1)
-        order = Orders(1, 1, test_product.quantity, test_product.product_id, test_product.user_id)
+        # test_product = ProductCart(1, 9, "Fudge Ripple", 24.0, 1)
+        order = Orders(1, 1, 1, 9, 1)
         returned_order = OrdersDAOImpl.add_order(order)
         self.assertEqual(returned_order.order_number, order.order_number)
 

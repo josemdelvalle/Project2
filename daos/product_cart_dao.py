@@ -2,7 +2,6 @@ from daos.orders_dao_impl import OrdersDAOImpl
 from exceptions.resource_not_found import ResourceNotFound
 from models.orders import Orders
 from models.product_cart import ProductCart
-from models.products import Products
 from util_project2.database_connection import connection
 
 
@@ -18,7 +17,6 @@ class ProductCartDAO:
         record = cursor.fetchone()
         if record:
             returned_product = ProductCart(record[0], record[1], record[2], record[3], record[4], record[5])
-            print(record)
             return returned_product
         else:
             raise ResourceNotFound(f"User with ID {product_cart.user_id} does not exist. Please try again.")
@@ -65,11 +63,9 @@ class ProductCartDAO:
         else:
             raise ResourceNotFound(f"User with ID {user_id} does not exist. Please try again.")
 
-
-
     @staticmethod
     def purchase_cart_items(user_id):
-        # First want to grab everything from the databse to add to the orders table
+        # First want to grab everything from the database to add to the orders table
         sql = "SELECT * FROM product_cart WHERE user_id = %s"
         cursor = connection.cursor()
         cursor.execute(sql, [user_id])

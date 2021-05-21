@@ -57,3 +57,6 @@ body {
 .text-font{
     font-family: 'Pacifico', cursive;
 }
+table {
+    width: 100%;
+  }
