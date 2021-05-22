@@ -1,11 +1,12 @@
 let xttp = new XMLHttpRequest();
 
+var allOrders;
 xttp.onreadystatechange = function() {
     console.log(this.readyState);
     if (this.readyState == 4 && this.status == 200){
-        console.log(this.responseText);
+        // console.log(this.responseText);
 
-        let allOrders = JSON.parse(this.responseText);
+        allOrders = JSON.parse(this.responseText);
         let orderNumbers = [];
         for (let i = 0; i < allOrders.length; i++){
             if (!orderNumbers.includes(allOrders[i].orderNumber)){
@@ -13,7 +14,10 @@ xttp.onreadystatechange = function() {
             }
         }
 
-        console.log(orderNumbers);
+        // console.log(orderNumbers);
+        document.getElementById("container").innerHTML += 
+        ` <p>All Placed Orders</p>
+        `
         for(number in orderNumbers){
             // create view orders button
             document.getElementById("container").innerHTML += 
@@ -22,6 +26,8 @@ xttp.onreadystatechange = function() {
                 </div>
             `;
         }
+
+        mostPopularItems();
     }
 }
 
@@ -32,4 +38,20 @@ xttp.send();
 
 function openOrderView(id){
     document.location.href = "orderView.html?id=" + id;
+}
+
+function mostPopularItems(){
+    let allOrderProducts = [];
+    for (i = 0; i < allOrders.length; i++){
+        allOrderProducts.push(allOrders[i].product_id);
+    }
+
+    console.log(allOrderProducts);
+
+    let productDict = {};
+    for (i = 0; i < allOrderProducts[i]; i++){
+        if (productDict.includes(allOrderProducts[i])){
+            
+        }
+    }
 }
