@@ -3,6 +3,7 @@ get_all_products_from_cart_by_user_id(userId);
 const tableContent =document.getElementById("tableContent");
 const priceTag=document.getElementById("totalPrice");
 const submitOrderBtn = document.getElementById("submitOrderBtn");
+const orderSubmitNotificationText =document.getElementById("orderSubmitNotificationText");
 var productArr;
 function get_all_products_from_cart_by_user_id(user_id){
     var xhr = new XMLHttpRequest();
@@ -73,6 +74,8 @@ function addOrder(){
     userId:userId
   }));
   xhr2.onreadystatechange = function (){
-   console.log("here");
+    get_all_products_from_cart_by_user_id(userId);
+    tableContent.innerHTML="";
+    orderSubmitNotificationText.innerHTML="Order Submitted!"
   }
 }
