@@ -9,8 +9,8 @@
         <module name="JavaAPI" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="JavaAPI" target="15" />
+    <bytecodeTargetLevel target="8">
+      <module name="JavaAPI" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
