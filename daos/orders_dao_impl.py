@@ -22,14 +22,18 @@ class OrdersDAOImpl(OrdersDAO):
 
     @classmethod
     def add_order(cls, order):
-        sql = "INSERT INTO orders VALUES(default, %s, %s, %s, %s) RETURNING *"
-        cursor = connection.cursor()
-        cursor.execute(sql, (order.order_number, order.quantity, order.product_id, order.user_id))
-        connection.commit()
-        record = cursor.fetchone()
-        returned_order = Order(record[0], record[1], record[2], record[3], record[4])
-        return returned_order
-
+        try:
+            list_param = []
+            order_number = OrdersDAOImpl.return_largest_order_number()
+            for orderx in order:
+                list_param.append((order_number, orderx.quantity, orderx.product_id, orderx.user_id))
+            sql = "INSERT INTO orders values(default, %s, %s, %s, %s) RETURNING *"
+            cursor = connection.cursor()
+            cursor.executemany(sql, list_param)
+            connection.commit()
+            return "Order submitted", 200
+        except Exception as e:
+            raise ResourceNotFound(f"Order does not exist. Please try again.")
     @classmethod
     def return_largest_order_number(cls):
         sql = "SELECT MAX(order_number) FROM orders"
