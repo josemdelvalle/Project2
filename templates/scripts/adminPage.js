@@ -8,10 +8,8 @@ xttp.onreadystatechange = function() {
         let allOrders = JSON.parse(this.responseText);
         let orderNumbers = [];
         for (let i = 0; i < allOrders.length; i++){
-            console.log(allOrders[i].orderNumber);
-            if (!orderNumbers.includes(i)){
-                orderNumbers += i;
-                console.log(i);
+            if (!orderNumbers.includes(allOrders[i].orderNumber)){
+                orderNumbers.push(allOrders[i].orderNumber);
             }
         }
 
@@ -20,7 +18,7 @@ xttp.onreadystatechange = function() {
             // create view orders button
             document.getElementById("container").innerHTML += 
             `   <div>
-                    <button id=${number}>Click Button</button>
+                    <button id=${number} onclick=openOrderView(${number})>Open order ${number}</button>
                 </div>
             `;
         }
@@ -31,3 +29,7 @@ url = "http://localhost:7001/orders";
 xttp.open("GET", url, true);
 
 xttp.send();
+
+function openOrderView(id){
+    document.location.href = "orderView.html?id=" + id;
+}
