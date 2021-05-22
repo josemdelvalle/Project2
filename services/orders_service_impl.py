@@ -4,8 +4,8 @@ from services.orders_service import OrdersService
 
 class OrdersServiceImpl(OrdersService):
     @classmethod
-    def add_order(cls, order):
-        response = OrdersDAOImpl.add_order(order)
+    def add_order(cls, user_id):
+        response = OrdersDAOImpl.add_order(user_id)
         return response
 
     @classmethod

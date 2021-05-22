@@ -8,6 +8,6 @@ class OrdersService:
         pass
 
     @abstractmethod
-    def add_order(self, order):
+    def add_order(self, user_id):
         pass
 

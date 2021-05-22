@@ -1,6 +1,8 @@
 import re
 
 from daos.orders_dao import OrdersDAO
+from daos.product_cart_dao import ProductCartDAO
+from exceptions.resource_not_found import ResourceNotFound
 from models.order import Order
 from util_project2.database_connection import connection
 
@@ -21,19 +23,24 @@ class OrdersDAOImpl(OrdersDAO):
             return None
 
     @classmethod
-    def add_order(cls, order):
+    def add_order(cls, user_id):
         try:
-            list_param = []
-            order_number = OrdersDAOImpl.return_largest_order_number()
-            for orderx in order:
-                list_param.append((order_number, orderx.quantity, orderx.product_id, orderx.user_id))
+            order_num = cls.return_largest_order_number()
+            products_in_cart = ProductCartDAO.get_all_products_from_cart_by_user_id(user_id)
+            data = []
+            for cart_item in products_in_cart:
+                data.append((order_num, cart_item.quantity, cart_item.product_id, user_id))
             sql = "INSERT INTO orders values(default, %s, %s, %s, %s) RETURNING *"
             cursor = connection.cursor()
-            cursor.executemany(sql, list_param)
+            cursor.executemany(sql, data)
             connection.commit()
+
+            ProductCartDAO.delete_cart_items_from_user_id(user_id)
+
             return "Order submitted", 200
         except Exception as e:
             raise ResourceNotFound(f"Order does not exist. Please try again.")
+
     @classmethod
     def return_largest_order_number(cls):
         sql = "SELECT MAX(order_number) FROM orders"
@@ -41,5 +48,7 @@ class OrdersDAOImpl(OrdersDAO):
         cursor.execute(sql)
         connection.commit()
         record = cursor.fetchone()
+        if not record[0]:
+            record = 1
         number = re.sub("[^0-9]", "", str(record))
         return int(number) + 1
