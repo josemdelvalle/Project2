@@ -13,9 +13,12 @@ function get_all_products_from_cart_by_user_id(user_id){
       if (this.readyState == 4 && this.status == 200) {
         console.log(this.responseText)
         productArr=JSON.parse(this.responseText);
-         productArr.forEach(createProductElement);
-         setTotalPrice(productArr);
-         
+        if (productArr){
+          productArr.forEach(createProductElement);
+          setTotalPrice(productArr);
+        }
+        
+      
       }else{
         priceTag.innerHTML=0;
       }
@@ -54,7 +57,7 @@ function delete_item_from_cart(cartId){
       tableContent.innerHTML="";
       get_all_products_from_cart_by_user_id(userId);
     }else{
-
+      console.log(this.responseText);
     }
   }
   xhr.send();
@@ -67,7 +70,7 @@ function addOrder(){
   xhr2.open("POST", "http://127.0.0.1:5000/order", true);
   xhr2.setRequestHeader('Content-Type', 'application/json');
   xhr2.send(JSON.stringify({
-   productArr:productArr
+    userId:userId
   }));
   xhr2.onreadystatechange = function (){
    console.log("here");

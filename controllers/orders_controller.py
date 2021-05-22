@@ -19,13 +19,9 @@ def route(app):
     @app.route("/order", methods=['POST'])
     def add_order():
         try:
-            product_arr = request.json["productArr"]
-            orders = []
-            for product in product_arr:
-                order = Order(None, None, product['quantity'], product['productId'],
-                              product['userId'])
-                orders.append(order)
-            response = OrdersServiceImpl.add_order(orders)
+            user_id = request.json["userId"]
+            response = OrdersServiceImpl.add_order(user_id)
+            print("here4")
             return jsonify(response)
         except ResourceNotFound as r:
             return r.message, 404

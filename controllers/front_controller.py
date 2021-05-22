@@ -20,10 +20,3 @@ def route(app):
             return response, 200
         except ResourceNotFound as r:
             return r.message, 404
-    #
-    # @app.route("/menu", methods=['Get'])
-    # def get_products():
-    #     try:
-    #         pass
-    #     except Exception as e:
-    #         return 'Need to sign in first', 404
