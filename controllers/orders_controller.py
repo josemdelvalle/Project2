@@ -1,4 +1,4 @@
-from flask import jsonify , request
+from flask import jsonify, request
 
 from exceptions.resource_not_found import ResourceNotFound
 from models.order import Order
@@ -19,9 +19,13 @@ def route(app):
     @app.route("/order", methods=['POST'])
     def add_order():
         try:
-            print("Here")
-            order = Order.json_parse(request.json)
-            response = OrdersServiceImpl.add_order(order)
-            return jsonify(response.json())
+            product_arr = request.json["productArr"]
+            orders = []
+            for product in product_arr:
+                order = Order(None, None, product['quantity'], product['productId'],
+                              product['userId'])
+                orders.append(order)
+            response = OrdersServiceImpl.add_order(orders)
+            return jsonify(response)
         except ResourceNotFound as r:
             return r.message, 404

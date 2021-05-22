@@ -67,9 +67,7 @@ function addOrder(){
   xhr2.open("POST", "http://127.0.0.1:5000/order", true);
   xhr2.setRequestHeader('Content-Type', 'application/json');
   xhr2.send(JSON.stringify({
-    // productId: product.productId,
-    // userId: userId,
-    // quantity: qty
+   productArr:productArr
   }));
   xhr2.onreadystatechange = function (){
    console.log("here");

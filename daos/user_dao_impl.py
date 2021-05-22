@@ -12,7 +12,6 @@ class UserDAOImpl(UserDAO):
         cursor = connection.cursor()
         cursor.execute(sql, [user_id])
         record = cursor.fetchone()
-
         if record:
             return User(record[0], record[1], record[2])
         else:

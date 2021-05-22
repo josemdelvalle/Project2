@@ -6,6 +6,7 @@ btn.addEventListener('click', (e) => {
     xhr.withCredentials = true;
     const username = document.getElementById('usernameInput').value;
     const password = document.getElementById('passwordInput').value;
+  
     xhr.open("POST", "http://127.0.0.1:5000/login", true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({

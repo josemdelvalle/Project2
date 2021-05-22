@@ -11,7 +11,7 @@ def route(app):
         try:
             user_credentials = UserCredentials.json_parse(request.json)
             # Return the user ID if the credentials are in the database, otherwise returns an exception
-            user_id = UserServiceImpl.get_user_credentials(user_credentials)
+            user_id = UserServiceImpl.get_user_credentials(user_credentials).user_id
             # Gets user information from ID returned in previous step
             user = UserServiceImpl.get_user_by_id(user_id)
             if user.first_name == 'Marc':

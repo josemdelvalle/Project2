@@ -9,7 +9,7 @@ from features.pages.login_page import LoginHomePage
 def go_to_login_page(context):
     login: LoginHomePage = context.login_page
     login.url()
-    # sleep(5)
+    sleep(5)
 
 
 @when(u'The user types the jose in the username bar')
@@ -29,7 +29,7 @@ def step_impl(context):
 
 @then(u'The Logged in Logged in appears')
 def step_impl(context):
-    sleep(1)
+    sleep(5)
     print(context.driver.title)
     assert context.driver.title == "Store Page"
 

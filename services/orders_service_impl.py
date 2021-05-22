@@ -5,7 +5,8 @@ from services.orders_service import OrdersService
 class OrdersServiceImpl(OrdersService):
     @classmethod
     def add_order(cls, order):
-       pass
+        response = OrdersDAOImpl.add_order(order)
+        return response
 
     @classmethod
     def get_orders(cls):
