@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0a4ec57-9c34-4a89-8c8f-51a1502520da" name="Default Changelist" comment="created Java API that returns all orders. needs additional implementation to match current orders table in database">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../templates/scripts/adminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/scripts/adminPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
