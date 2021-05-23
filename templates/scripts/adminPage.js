@@ -63,7 +63,6 @@ function mostPopularItems(){
     for(var k in productDict){
         if (top5.length == 0){
             top5.push(productDict[k]);
-            console.log("added " + productDict[k]);
         }
         
         for(i = 0; i < top5.length; i++){
@@ -72,17 +71,14 @@ function mostPopularItems(){
             }
 
             if(top5[i] >= productDict[k]){
-                console.log("top5[" + i + "] is greater");
             }
             
             if(top5[i] <= productDict[k]){
                 top5.push(top5[i]);
                 top5[i] = productDict[k];
-                console.log("top5[" + i + "] is less than");
             } else {
                 if(top5.length < 6){
                     top5.push(productDict[k]);
-                    console.log("added " + productDict[k]);
                 }
             }
         }
