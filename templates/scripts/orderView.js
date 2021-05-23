@@ -12,10 +12,11 @@ console.log(data.id);
 // Send AJAX call to retrieve information on start up for order
 let xttp = new XMLHttpRequest();
 
+var allOrders = [];
 xttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200){
         let retrievedOrders = JSON.parse(this.responseText);
-        let allOrders = [];
+        
         
         for (i = 0; i < retrievedOrders.length; i++){
             // console.log(retrievedOrders[i].orderNumber);
@@ -25,13 +26,29 @@ xttp.onreadystatechange = function() {
         }
 
         for (i = 0; i < allOrders.length; i++){
-            // This is where all of the information of choice will
-            // be displayed
-            document.getElementById("container").innerHTML += 
-            `   <div>
-                    <p>${allOrders[i].product_id}</p>
-                </div>
-            `;
+            // This is where product name will be displayed
+            // Sends a request to the databse in order to retrieve
+            // all product information
+            let xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200){
+                    // displays the name of the product retrieved
+                    let object = JSON.parse(this.responseText);
+                    console.log(object);
+                    document.getElementById("container").innerHTML += 
+                    `   <div>
+                            <p>${object.productName}</p>
+                        </div>
+                    `;
+                }
+            }
+        
+            let location = "http://localhost:5000/products/" + allOrders[i].product_id;
+            xhr.open("GET", location, true);
+        
+            xhr.send();
+           
         }
     }
 }
