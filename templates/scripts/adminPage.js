@@ -16,7 +16,7 @@ xttp.onreadystatechange = function() {
 
         // console.log(orderNumbers);
         document.getElementById("container").innerHTML += 
-        ` <p>All Placed Orders</p>
+        ` <h1>All Placed Orders</h1>
         `
         for(number in orderNumbers){
             // create view orders button
@@ -107,12 +107,24 @@ function mostPopularItems(){
     console.log(popular);
 
     let element = document.getElementById("popular");
-    element.innerHTML += "<p> Most popular products </p>"
+    element.innerHTML += "<h1> Most popular products </h1>"
     for (i = 0; i < popular.length; i++){
-        element.innerHTML += 
-        `   <div>
-                <p>ProductId = ${popular[i]}</p>
-            </div>
-        `;
+        let xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200){
+                let product = JSON.parse(this.responseText);
+                element.innerHTML += 
+                `   <div>
+                        <p>${product.productName}</p>
+                    </div>
+                `;
+            }
+        }
+
+        let destination = "http://localhost:5000/products/" + popular[i];
+        xhr.open("GET", destination, true);
+
+        xhr.send();
     }
 }
