@@ -49,9 +49,70 @@ function mostPopularItems(){
     console.log(allOrderProducts);
 
     let productDict = {};
-    for (i = 0; i < allOrderProducts[i]; i++){
-        if (productDict.includes(allOrderProducts[i])){
-            
+    for (i = 0; i < allOrderProducts.length; i++){
+        if (productDict[allOrderProducts[i]]){
+            productDict[allOrderProducts[i]] = productDict[allOrderProducts[i]] + 1;
+        } else {
+            productDict[allOrderProducts[i]] = 1;
         }
+    }
+
+    console.log(productDict);
+
+    let top5 = [];
+    for(var k in productDict){
+        if (top5.length == 0){
+            top5.push(productDict[k]);
+            console.log("added " + productDict[k]);
+        }
+        
+        for(i = 0; i < top5.length; i++){
+            if (top5.includes(productDict[k])){
+                break;
+            }
+
+            if(top5[i] >= productDict[k]){
+                console.log("top5[" + i + "] is greater");
+            }
+            
+            if(top5[i] <= productDict[k]){
+                top5.push(top5[i]);
+                top5[i] = productDict[k];
+                console.log("top5[" + i + "] is less than");
+            } else {
+                if(top5.length < 6){
+                    top5.push(productDict[k]);
+                    console.log("added " + productDict[k]);
+                }
+            }
+        }
+    }
+
+    console.log(top5);
+
+    function getKeyByValue(object, value) {
+        for (var prop in object) {
+            if (object.hasOwnProperty(prop)) {
+                if (object[prop] === value)
+                return prop;
+            }
+        }
+    }
+
+    let popular = [];
+    for(i = 0; i < top5.length; i++){
+        popular.push(getKeyByValue(productDict, top5[i]));
+    }
+
+    console.log(popular);
+
+    let element = document.getElementById("popular");
+    element.innerHTML += "<p> Most popular products </p>"
+    for (i = 0; i < popular.length; i++){
+        element.innerHTML += 
+        `   <div>
+                <p>ProductId = ${popular[i]}</p>
+            </div>
+        `;
     }
 }
