@@ -75,7 +75,10 @@ function addOrder(){
   }));
   xhr2.onreadystatechange = function (){
     get_all_products_from_cart_by_user_id(userId);
-    tableContent.innerHTML="";
-    orderSubmitNotificationText.innerHTML="Order Submitted!"
+    if (this.readyState == 4 && this.status == 200) {
+      tableContent.innerHTML="";
+      orderSubmitNotificationText.innerHTML="Order Submitted!"
+    }
+
   }
 }

@@ -5,8 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0a4ec57-9c34-4a89-8c8f-51a1502520da" name="Default Changelist" comment="created Java API that returns all orders. needs additional implementation to match current orders table in database">
+      <change afterPath="$PROJECT_DIR$/../features/filter.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../templates/scripts/adminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/scripts/adminPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../features/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/../features/environment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../features/login.feature" beforeDir="false" afterPath="$PROJECT_DIR$/../features/login.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../features/make_order.feature" beforeDir="false" afterPath="$PROJECT_DIR$/../features/make_order.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../features/pages/cart_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/../features/pages/cart_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../features/pages/store_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/../features/pages/store_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../features/remove_from_cart.feature" beforeDir="false" afterPath="$PROJECT_DIR$/../features/remove_from_cart.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../features/steps/login_steps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../features/steps/login_steps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../features/steps/make_order_steps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../features/steps/make_order_steps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../features/steps/pick_from_store_steps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../features/steps/pick_from_store_steps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../features/steps/remove_from_cart_steps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../features/steps/remove_from_cart_steps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../features/steps/submit_cart_steps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../features/steps/submit_cart_steps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../features/submit_cart.feature" beforeDir="false" afterPath="$PROJECT_DIR$/../features/submit_cart.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/myCart.html" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/myCart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/productOverview.html" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/productOverview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/scripts/myCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/scripts/myCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/storePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/storePage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

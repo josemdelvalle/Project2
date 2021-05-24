@@ -7,30 +7,35 @@ from features.pages.product_page import ProductPage
 from features.pages.store_page import StorePage
 
 
-@given(u'The user is on the order page')
+@given(u'The user is on the productOverview page')
 def to_order_page(context):
-    login: LoginHomePage = context.login_page
-    login.driver.implicitly_wait(2)
-    login.url()
-    login.customer_login()
-    sleep(2)
+    print("hello")
+    context.store_page.get_random_product_by_name().click()
+    sleep(7)
 
 
 @when(u'The user fills out an order')
 def step_impl(context):
-    store_page: StorePage = context.store_page
     product_page: ProductPage = context.product_page
-
-    store_page.get_product_by_id(4).click()
-    sleep(2)
-
-    product_page.driver.implicitly_wait(2)
+    sleep(5)
+    product_page.get_quantity_input().clear()
+    product_page.get_quantity_input().send_keys(5)
+    sleep(5)
+    product_page.get_quantity_input().clear()
     product_page.get_quantity_input().send_keys(2)
+    sleep(5)
+
+
+@when(u'The user clicks on the submit button')
+def step_impl(context):
+    product_page: ProductPage = context.product_page
     product_page.get_cart_submit_button().click()
+    sleep(5)
 
 
 @then(u'The order gets added to the cart')
 def step_impl(context):
     product_page: ProductPage = context.product_page
     text = product_page.get_confirmation_text().text
+    sleep(8)
     assert text == "Product added to cart!"

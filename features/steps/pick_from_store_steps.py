@@ -7,25 +7,27 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 def user_logs_on(context):
     driver: WebDriver = context.driver
     driver.maximize_window()
-    driver.get('G:/Project2/templates/login.html')
+    driver.get('http://localhost:5500/login.html')
+    sleep(8)
     context.login_page.username_input().send_keys("jose")
     context.login_page.password_input().send_keys("12345")
+    sleep(5)
     context.login_page.login_button().click()
-    sleep(1)
+    sleep(5)
 
 
 @given(u'The user is on the store page')
 def user_on_store_page(context):
-    print(context.driver.title)
+    sleep(10)
     assert context.driver.title == "Store Page"
 
 
 @when(u'The user clicks on a product')
 def user_clicks_on_product(context):
-    context.store_page.product().click()
+    context.store_page.get_random_product_by_name().click()
 
 
 @then(u'The user goes to that product\'s description page')
 def user_on_item_overview_page(context):
-    sleep(1)
-    assert context.driver.title != "Store Page"
+    sleep(5)
+    assert context.driver.title == "Product Overview"

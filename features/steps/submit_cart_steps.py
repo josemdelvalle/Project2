@@ -10,9 +10,12 @@ from features.pages.login_page import LoginHomePage
 def step_impl(context):
     cart_page: CartPage = context.cart_page
     cart_page.get_submit_button().click()
+    sleep(9)
 
 
 @then(u'The item gets submitted')
 def step_impl(context):
-    assert True
+    cart_page: CartPage = context.cart_page
+    assert cart_page.get_submit_text_div().text == 'Order Submitted!'
+    sleep(5)
     # need some sort of confirmation for this test
