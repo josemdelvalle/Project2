@@ -20,9 +20,10 @@ xttp.onreadystatechange = function() {
         `
         for(number in orderNumbers){
             // create view orders button
+            let id = parseInt(number) + 1;
             document.getElementById("container").innerHTML += 
             `   <div>
-                    <button id=${number} onclick=openOrderView(${number})>Open order ${number}</button>
+                    <button id=${id} onclick=openOrderView(${id})>Open order ${id}</button>
                 </div>
             `;
         }
@@ -63,7 +64,6 @@ function mostPopularItems(){
     for(var k in productDict){
         if (top5.length == 0){
             top5.push(productDict[k]);
-            console.log("added " + productDict[k]);
         }
         
         for(i = 0; i < top5.length; i++){
@@ -72,17 +72,14 @@ function mostPopularItems(){
             }
 
             if(top5[i] >= productDict[k]){
-                console.log("top5[" + i + "] is greater");
             }
             
             if(top5[i] <= productDict[k]){
                 top5.push(top5[i]);
                 top5[i] = productDict[k];
-                console.log("top5[" + i + "] is less than");
             } else {
                 if(top5.length < 6){
                     top5.push(productDict[k]);
-                    console.log("added " + productDict[k]);
                 }
             }
         }
@@ -102,6 +99,7 @@ function mostPopularItems(){
     let popular = [];
     for(i = 0; i < top5.length; i++){
         popular.push(getKeyByValue(productDict, top5[i]));
+        console.log(top5[i]);
     }
 
     console.log(popular);
@@ -116,9 +114,11 @@ function mostPopularItems(){
                 let product = JSON.parse(this.responseText);
                 element.innerHTML += 
                 `   <div>
-                        <p>${product.productName}</p>
+                        <p>${top5[0]} ${product.productName}</p>
                     </div>
                 `;
+                
+                top5.splice(0, 1);
             }
         }
 
