@@ -18,7 +18,7 @@ def user_logs_on(context):
 
 @given(u'The user is on the store page')
 def user_on_store_page(context):
-    sleep(10)
+    sleep(6)
     assert context.driver.title == "Store Page"
 
 
@@ -29,5 +29,5 @@ def user_clicks_on_product(context):
 
 @then(u'The user goes to that product\'s description page')
 def user_on_item_overview_page(context):
-    sleep(5)
+    sleep(9)
     assert context.driver.title == "Product Overview"

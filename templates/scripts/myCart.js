@@ -34,7 +34,7 @@ function createProductElement(element){
       <td>${element.productName}</td>
       <td>${element.productPrice}</td>
       <td>${element.quantity}</td>
-      <td><button name="${element.cartId}" class="cartBtn" onclick="delete_item_from_cart(this.name)">X</button></td>
+      <td><button name="${element.cartId}" class="cartBtn cartItem" onclick="delete_item_from_cart(this.name)">X</button></td>
      </tr>
     `;
 }

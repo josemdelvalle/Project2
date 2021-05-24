@@ -7,6 +7,8 @@ from features.pages.cart_page import CartPage
 from features.pages.login_page import LoginHomePage
 from features.pages.store_page import StorePage
 
+cartItems = 0
+
 
 @given(u'The user is on the cart page')
 def step_impl(context):
@@ -19,22 +21,21 @@ def step_impl(context):
 
 @given(u'The user has items in the cart')
 def step_impl(context):
+    global cartItems
     cart_page: CartPage = context.cart_page
-    assert cart_page.get_first_item_discard_button_by_name(169)
+    cartItems = len(cart_page.get_cart_items())
+    assert cartItems > 0
 
 
 @when(u'The user clicks on remove order')
 def step_impl(context):
     cart_page: CartPage = context.cart_page
-    cart_page.get_first_item_discard_button_by_name(169).click()
+    cart_page.get_first_item_discard_button_by_xpath().click()
     sleep(8)
 
 
 @then(u'The item gets removed from the cart')
 def step_impl(context):
-    try:
-        cart_page: CartPage = context.cart_page
-        cart_page.get_first_item_discard_button_by_name(169)
-        raise AssertionError
-    except NoSuchElementException:
-        assert True
+    global cartItems
+    cart_page: CartPage = context.cart_page
+    assert len(cart_page.get_cart_items()) < cartItems

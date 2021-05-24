@@ -18,3 +18,6 @@ class CartPage:
 
     def get_submit_text_div(self):
         return self.driver.find_element_by_id("orderSubmitNotificationText")
+
+    def get_cart_items(self):
+        return self.driver.find_elements_by_class_name('cartItem')

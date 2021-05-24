@@ -33,7 +33,7 @@ def step_impl(context):
     sleep(5)
 
 
-@then(u'The order gets added to the cart')
+@then(u'The product gets added to the cart')
 def step_impl(context):
     product_page: ProductPage = context.product_page
     text = product_page.get_confirmation_text().text
