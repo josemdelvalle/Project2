@@ -9,7 +9,7 @@ The Ice Cream Online Store App allows customers to order items online from the I
 * Python - version 3.9.4
 * Flask - version 1.1.2
 * Behave - version 1.2.6
-* Java - version 15.0.2
+* Java - version 1.8.0_291
 * Maven - version 4.0.0
 * Javalin - version 3.13.6
 * JavaScript - version ES6
